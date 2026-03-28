@@ -1,0 +1,31 @@
+# VoxCode - Tech Stack and Packages
+
+## Language & Environment
+* **Python 3.11** 
+  * Why: Provides the latest performance improvements, native async compatibility, and is the absolute sweet spot for AI dependencies (like `llama-cpp-python` and `js2py`).
+
+## AI Models & Speech Processing
+* **Vosk (vosk-model-small)** 
+  * Why: An extremely fast, lightweight offline ASR (Automatic Speech Recognition) engine. It is used to generate instantaneous, real-time partial text while the user is actively speaking, keeping the application lightning-fast and highly responsive.
+* **OpenAI-Whisper (Turbo / Large-v3)** 
+  * Why: State-of-the-art offline transcription model. It kicks in the massive neural network once the user finishes speaking, replacing the raw Vosk draft with a highly accurate, context-aware final transcript.
+* **Llama-CPP-Python (`llama-cpp-python[server]`)** 
+  * Why: High-performance Python bindings for running quantized LLMs (like `Qwen3.1-1.7B` or `Llama-3`) entirely offline and on CPU/Consumer GPUs. The `[server]` addon hosts the model wrapped inside a FastAPI OpenAI-compatible server on port 8000.
+* **SoundDevice** 
+  * Why: A low-level Python library used to natively interface with the microphone on Windows without compilation issues. It captures raw audio byte streams simultaneously for Vosk and Whisper.
+
+## Web Server & Backend API
+* **Flask & Flask-CORS** 
+  * Why: Very lightweight micro-framework perfect for quickly exposing our `audio`, `generate`, and `snippets` REST API routes on Port 3001 without the bloat of Django.
+* **Uvicorn & FastAPI** 
+  * Why: Under-the-hood ASGI servers used powerfully by `llama-cpp-python` for streaming text tokens chunk-by-chunk over Server-Sent Events (SSE).
+
+## Database & Storage
+* **NeonDB PostgreSQL & `psycopg2-binary`** 
+  * Why: A highly scalable, serverless SQL database used to manage user authentication and the cloud synchronization of their stored code snippets. `psycopg2-binary` is the standard, battle-tested DB adapter to bridge Python and Postgres safely.
+
+## Miscellaneous Extensions
+* **ONNXRuntime / PyTorch / NumPy** 
+  * Why: Tensor computations core to offline speech and language inference models.
+* **SpaCy**
+  * Why: Advanced Natural Language Processing (NLP) framework, used for potential tokenization or text analysis routines in future iterations of the project workflow.

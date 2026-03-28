@@ -1,0 +1,873 @@
+{
+  "dataset_info": {
+    "name": "Python Beginner to Intermediate - LLM Fine-Tuning Dataset",
+    "format": "instruction + output pairs",
+    "purpose": "Text generation / LLM fine-tuning",
+    "total_samples": 120,
+    "scope": "Beginner to Intermediate Python",
+    "levels": [
+      "Hello World & Print",
+      "Variables & Data Types",
+      "Operators",
+      "Strings",
+      "User Input",
+      "Conditional Statements",
+      "Loops",
+      "Functions",
+      "Lists",
+      "Tuples",
+      "Dictionaries",
+      "Sets",
+      "List Comprehension",
+      "String Methods",
+      "File Handling",
+      "Exception Handling",
+      "Modules & Imports",
+      "OOP Basics",
+      "Lambda & Higher Order Functions",
+      "Intermediate Concepts"
+    ]
+  },
+  "samples": [
+    {
+      "id": 1,
+      "category": "Hello World & Print",
+      "level": "beginner",
+      "instruction": "Write a Python program to print Hello, World!",
+      "output": "print('Hello, World!')"
+    },
+    {
+      "id": 2,
+      "category": "Hello World & Print",
+      "level": "beginner",
+      "instruction": "Write a Python program to print your name and age on separate lines.",
+      "output": "print('Alice')\nprint(25)"
+    },
+    {
+      "id": 3,
+      "category": "Hello World & Print",
+      "level": "beginner",
+      "instruction": "Print the text: Welcome to Python Programming! using an f-string with a variable.",
+      "output": "language = 'Python Programming'\nprint(f'Welcome to {language}!')"
+    },
+    {
+      "id": 4,
+      "category": "Hello World & Print",
+      "level": "beginner",
+      "instruction": "Print numbers 1 to 5 each on a new line using print statements.",
+      "output": "print(1)\nprint(2)\nprint(3)\nprint(4)\nprint(5)"
+    },
+    {
+      "id": 5,
+      "category": "Hello World & Print",
+      "level": "beginner",
+      "instruction": "Print Hello five times on the same line separated by spaces.",
+      "output": "print('Hello ' * 5)"
+    },
+    {
+      "id": 6,
+      "category": "Variables & Data Types",
+      "level": "beginner",
+      "instruction": "Create variables for a person's name, age, height, and whether they are a student. Print all of them.",
+      "output": "name = 'Alice'\nage = 22\nheight = 5.6\nis_student = True\nprint(name, age, height, is_student)"
+    },
+    {
+      "id": 7,
+      "category": "Variables & Data Types",
+      "level": "beginner",
+      "instruction": "Write a program to check the data type of the values 42, 3.14, 'hello', True, and None.",
+      "output": "print(type(42))\nprint(type(3.14))\nprint(type('hello'))\nprint(type(True))\nprint(type(None))"
+    },
+    {
+      "id": 8,
+      "category": "Variables & Data Types",
+      "level": "beginner",
+      "instruction": "Convert an integer 100 to float, a float 9.99 to int, and an integer 55 to a string. Print each result.",
+      "output": "print(float(100))\nprint(int(9.99))\nprint(str(55))"
+    },
+    {
+      "id": 9,
+      "category": "Variables & Data Types",
+      "level": "beginner",
+      "instruction": "Assign the same value 10 to three variables x, y, z in a single line and print them.",
+      "output": "x = y = z = 10\nprint(x, y, z)"
+    },
+    {
+      "id": 10,
+      "category": "Variables & Data Types",
+      "level": "beginner",
+      "instruction": "Swap the values of two variables a = 5 and b = 10 without using a third variable.",
+      "output": "a = 5\nb = 10\na, b = b, a\nprint(a, b)"
+    },
+    {
+      "id": 11,
+      "category": "Operators",
+      "level": "beginner",
+      "instruction": "Write a program that takes two numbers and prints the result of addition, subtraction, multiplication, and division.",
+      "output": "a = 15\nb = 4\nprint(a + b)\nprint(a - b)\nprint(a * b)\nprint(a / b)"
+    },
+    {
+      "id": 12,
+      "category": "Operators",
+      "level": "beginner",
+      "instruction": "Find the remainder when 17 is divided by 5 using the modulo operator.",
+      "output": "result = 17 % 5\nprint(result)"
+    },
+    {
+      "id": 13,
+      "category": "Operators",
+      "level": "beginner",
+      "instruction": "Calculate 2 to the power of 10 using Python and print the result.",
+      "output": "result = 2 ** 10\nprint(result)"
+    },
+    {
+      "id": 14,
+      "category": "Operators",
+      "level": "beginner",
+      "instruction": "Write a program using comparison operators to check if 10 is greater than 5, equal to 10, and not equal to 3.",
+      "output": "print(10 > 5)\nprint(10 == 10)\nprint(10 != 3)"
+    },
+    {
+      "id": 15,
+      "category": "Operators",
+      "level": "beginner",
+      "instruction": "Use logical operators to check if a number x=7 is greater than 5 AND less than 10.",
+      "output": "x = 7\nresult = x > 5 and x < 10\nprint(result)"
+    },
+    {
+      "id": 16,
+      "category": "Strings",
+      "level": "beginner",
+      "instruction": "Create a string 'Hello, World!' and print its length, first character, and last character.",
+      "output": "s = 'Hello, World!'\nprint(len(s))\nprint(s[0])\nprint(s[-1])"
+    },
+    {
+      "id": 17,
+      "category": "Strings",
+      "level": "beginner",
+      "instruction": "Concatenate two strings 'Python' and 'Programming' with a space in between.",
+      "output": "s1 = 'Python'\ns2 = 'Programming'\nresult = s1 + ' ' + s2\nprint(result)"
+    },
+    {
+      "id": 18,
+      "category": "Strings",
+      "level": "beginner",
+      "instruction": "Extract the substring 'World' from the string 'Hello, World!' using slicing.",
+      "output": "s = 'Hello, World!'\nprint(s[7:12])"
+    },
+    {
+      "id": 19,
+      "category": "Strings",
+      "level": "beginner",
+      "instruction": "Write a program to reverse the string 'Python'.",
+      "output": "s = 'Python'\nprint(s[::-1])"
+    },
+    {
+      "id": 20,
+      "category": "Strings",
+      "level": "beginner",
+      "instruction": "Check if the word 'Python' is present in the sentence 'I love Python programming'.",
+      "output": "sentence = 'I love Python programming'\nprint('Python' in sentence)"
+    },
+    {
+      "id": 21,
+      "category": "User Input",
+      "level": "beginner",
+      "instruction": "Write a Python program to take a user's name as input and greet them.",
+      "output": "name = input('Enter your name: ')\nprint(f'Hello, {name}! Welcome to Python.')"
+    },
+    {
+      "id": 22,
+      "category": "User Input",
+      "level": "beginner",
+      "instruction": "Take two numbers as input from the user and print their sum.",
+      "output": "a = int(input('Enter first number: '))\nb = int(input('Enter second number: '))\nprint(f'Sum = {a + b}')"
+    },
+    {
+      "id": 23,
+      "category": "User Input",
+      "level": "beginner",
+      "instruction": "Accept an age from the user and print whether they are a minor or an adult.",
+      "output": "age = int(input('Enter your age: '))\nif age >= 18:\n    print('You are an adult.')\nelse:\n    print('You are a minor.')"
+    },
+    {
+      "id": 24,
+      "category": "Conditional Statements",
+      "level": "beginner",
+      "instruction": "Write a program to find the largest of three numbers: 10, 25, and 17.",
+      "output": "a, b, c = 10, 25, 17\nif a >= b and a >= c:\n    print(a)\nelif b >= a and b >= c:\n    print(b)\nelse:\n    print(c)"
+    },
+    {
+      "id": 25,
+      "category": "Conditional Statements",
+      "level": "beginner",
+      "instruction": "Check if a number is positive, negative, or zero.",
+      "output": "num = int(input('Enter a number: '))\nif num > 0:\n    print('Positive')\nelif num < 0:\n    print('Negative')\nelse:\n    print('Zero')"
+    },
+    {
+      "id": 26,
+      "category": "Conditional Statements",
+      "level": "beginner",
+      "instruction": "Write a program to check if a number is even or odd.",
+      "output": "num = int(input('Enter a number: '))\nif num % 2 == 0:\n    print('Even')\nelse:\n    print('Odd')"
+    },
+    {
+      "id": 27,
+      "category": "Conditional Statements",
+      "level": "beginner",
+      "instruction": "Assign a grade based on a score: 90+ is A, 80+ is B, 70+ is C, 60+ is D, below 60 is F.",
+      "output": "score = int(input('Enter score: '))\nif score >= 90:\n    grade = 'A'\nelif score >= 80:\n    grade = 'B'\nelif score >= 70:\n    grade = 'C'\nelif score >= 60:\n    grade = 'D'\nelse:\n    grade = 'F'\nprint(f'Grade: {grade}')"
+    },
+    {
+      "id": 28,
+      "category": "Conditional Statements",
+      "level": "beginner",
+      "instruction": "Use a ternary operator to print 'Pass' if marks >= 50 else 'Fail'.",
+      "output": "marks = 65\nresult = 'Pass' if marks >= 50 else 'Fail'\nprint(result)"
+    },
+    {
+      "id": 29,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Print numbers from 1 to 10 using a for loop.",
+      "output": "for i in range(1, 11):\n    print(i)"
+    },
+    {
+      "id": 30,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Print the multiplication table of 5 using a for loop.",
+      "output": "for i in range(1, 11):\n    print(f'5 x {i} = {5 * i}')"
+    },
+    {
+      "id": 31,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Calculate the sum of numbers from 1 to 100 using a while loop.",
+      "output": "total = 0\ni = 1\nwhile i <= 100:\n    total += i\n    i += 1\nprint(total)"
+    },
+    {
+      "id": 32,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Print all even numbers between 1 and 20 using a for loop.",
+      "output": "for i in range(2, 21, 2):\n    print(i)"
+    },
+    {
+      "id": 33,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Print the first 10 Fibonacci numbers using a loop.",
+      "output": "a, b = 0, 1\nfor _ in range(10):\n    print(a, end=' ')\n    a, b = b, a + b"
+    },
+    {
+      "id": 34,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Use a for loop with break to find and print the first number divisible by 7 in range 1 to 50.",
+      "output": "for i in range(1, 51):\n    if i % 7 == 0:\n        print(i)\n        break"
+    },
+    {
+      "id": 35,
+      "category": "Loops",
+      "level": "beginner",
+      "instruction": "Print a pattern of stars using nested loops: 5 rows where row i has i stars.",
+      "output": "for i in range(1, 6):\n    print('*' * i)"
+    },
+    {
+      "id": 36,
+      "category": "Functions",
+      "level": "beginner",
+      "instruction": "Write a function called greet that takes a name and prints Hello, name!",
+      "output": "def greet(name):\n    print(f'Hello, {name}!')\n\ngreet('Alice')"
+    },
+    {
+      "id": 37,
+      "category": "Functions",
+      "level": "beginner",
+      "instruction": "Write a function to add two numbers and return the result.",
+      "output": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)"
+    },
+    {
+      "id": 38,
+      "category": "Functions",
+      "level": "beginner",
+      "instruction": "Write a function to check if a number is prime and return True or False.",
+      "output": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nprint(is_prime(17))\nprint(is_prime(4))"
+    },
+    {
+      "id": 39,
+      "category": "Functions",
+      "level": "beginner",
+      "instruction": "Write a function with a default parameter. Function power(base, exp=2) returns base raised to exp.",
+      "output": "def power(base, exp=2):\n    return base ** exp\n\nprint(power(3))\nprint(power(2, 10))"
+    },
+    {
+      "id": 40,
+      "category": "Functions",
+      "level": "intermediate",
+      "instruction": "Write a recursive function to calculate the factorial of a number.",
+      "output": "def factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))\nprint(factorial(10))"
+    },
+    {
+      "id": 41,
+      "category": "Functions",
+      "level": "intermediate",
+      "instruction": "Write a function that accepts any number of positional and keyword arguments and prints them.",
+      "output": "def show_info(*args, **kwargs):\n    for arg in args:\n        print('Positional:', arg)\n    for key, val in kwargs.items():\n        print(f'Keyword: {key} = {val}')\n\nshow_info(1, 2, 3, name='Alice', age=25)"
+    },
+    {
+      "id": 42,
+      "category": "Lists",
+      "level": "beginner",
+      "instruction": "Create a list of 5 fruits and print the first and last item.",
+      "output": "fruits = ['apple', 'banana', 'mango', 'grape', 'orange']\nprint(fruits[0])\nprint(fruits[-1])"
+    },
+    {
+      "id": 43,
+      "category": "Lists",
+      "level": "beginner",
+      "instruction": "Add an element to the end of a list and remove the second element.",
+      "output": "items = [10, 20, 30, 40]\nitems.append(50)\nitems.pop(1)\nprint(items)"
+    },
+    {
+      "id": 44,
+      "category": "Lists",
+      "level": "beginner",
+      "instruction": "Sort a list [5, 2, 8, 1, 9, 3] in ascending and descending order.",
+      "output": "nums = [5, 2, 8, 1, 9, 3]\nprint(sorted(nums))\nprint(sorted(nums, reverse=True))"
+    },
+    {
+      "id": 45,
+      "category": "Lists",
+      "level": "beginner",
+      "instruction": "Find the maximum and minimum values in a list [34, 12, 56, 7, 99, 23].",
+      "output": "nums = [34, 12, 56, 7, 99, 23]\nprint(max(nums))\nprint(min(nums))"
+    },
+    {
+      "id": 46,
+      "category": "Lists",
+      "level": "intermediate",
+      "instruction": "Write a program to remove duplicate elements from a list while preserving order.",
+      "output": "items = [1, 2, 3, 2, 1, 4, 5, 4]\nseen = []\nresult = []\nfor item in items:\n    if item not in seen:\n        seen.append(item)\n        result.append(item)\nprint(result)"
+    },
+    {
+      "id": 47,
+      "category": "Lists",
+      "level": "intermediate",
+      "instruction": "Flatten a nested list [[1, 2], [3, 4], [5, 6]] into a single list.",
+      "output": "nested = [[1, 2], [3, 4], [5, 6]]\nflat = [item for sublist in nested for item in sublist]\nprint(flat)"
+    },
+    {
+      "id": 48,
+      "category": "Tuples",
+      "level": "beginner",
+      "instruction": "Create a tuple of 4 colors and print the second color.",
+      "output": "colors = ('red', 'green', 'blue', 'yellow')\nprint(colors[1])"
+    },
+    {
+      "id": 49,
+      "category": "Tuples",
+      "level": "beginner",
+      "instruction": "Unpack a tuple (10, 20, 30) into three separate variables and print them.",
+      "output": "t = (10, 20, 30)\na, b, c = t\nprint(a, b, c)"
+    },
+    {
+      "id": 50,
+      "category": "Tuples",
+      "level": "intermediate",
+      "instruction": "Write a function that returns multiple values as a tuple and unpack the result.",
+      "output": "def min_max(nums):\n    return min(nums), max(nums)\n\ndata = [4, 7, 2, 9, 1]\nlow, high = min_max(data)\nprint(f'Min: {low}, Max: {high}')"
+    },
+    {
+      "id": 51,
+      "category": "Dictionaries",
+      "level": "beginner",
+      "instruction": "Create a dictionary with a student's name, age, and grade. Print each key-value pair.",
+      "output": "student = {'name': 'Alice', 'age': 20, 'grade': 'A'}\nfor key, value in student.items():\n    print(f'{key}: {value}')"
+    },
+    {
+      "id": 52,
+      "category": "Dictionaries",
+      "level": "beginner",
+      "instruction": "Add a new key 'email' to an existing dictionary and update the 'age' value.",
+      "output": "person = {'name': 'Bob', 'age': 25}\nperson['email'] = 'bob@example.com'\nperson['age'] = 26\nprint(person)"
+    },
+    {
+      "id": 53,
+      "category": "Dictionaries",
+      "level": "beginner",
+      "instruction": "Check if a key 'phone' exists in a dictionary and print a message accordingly.",
+      "output": "info = {'name': 'Alice', 'email': 'alice@test.com'}\nif 'phone' in info:\n    print('Phone found:', info['phone'])\nelse:\n    print('Phone not found')"
+    },
+    {
+      "id": 54,
+      "category": "Dictionaries",
+      "level": "intermediate",
+      "instruction": "Count the frequency of each character in the string 'hello world' using a dictionary.",
+      "output": "text = 'hello world'\nfreq = {}\nfor char in text:\n    freq[char] = freq.get(char, 0) + 1\nprint(freq)"
+    },
+    {
+      "id": 55,
+      "category": "Dictionaries",
+      "level": "intermediate",
+      "instruction": "Sort a dictionary by its values in descending order.",
+      "output": "scores = {'Alice': 88, 'Bob': 95, 'Charlie': 72, 'Diana': 90}\nsorted_scores = dict(sorted(scores.items(), key=lambda x: x[1], reverse=True))\nprint(sorted_scores)"
+    },
+    {
+      "id": 56,
+      "category": "Sets",
+      "level": "beginner",
+      "instruction": "Create a set of numbers, add a new number, and remove an existing one.",
+      "output": "nums = {1, 2, 3, 4, 5}\nnums.add(6)\nnums.remove(3)\nprint(nums)"
+    },
+    {
+      "id": 57,
+      "category": "Sets",
+      "level": "intermediate",
+      "instruction": "Find the union, intersection, and difference of two sets A={1,2,3,4} and B={3,4,5,6}.",
+      "output": "A = {1, 2, 3, 4}\nB = {3, 4, 5, 6}\nprint('Union:', A | B)\nprint('Intersection:', A & B)\nprint('Difference A-B:', A - B)\nprint('Difference B-A:', B - A)"
+    },
+    {
+      "id": 58,
+      "category": "Sets",
+      "level": "intermediate",
+      "instruction": "Remove duplicate elements from a list using a set.",
+      "output": "data = [1, 2, 3, 2, 1, 4, 3, 5]\nunique = list(set(data))\nprint(unique)"
+    },
+    {
+      "id": 59,
+      "category": "List Comprehension",
+      "level": "intermediate",
+      "instruction": "Use list comprehension to generate the squares of numbers from 1 to 10.",
+      "output": "squares = [x ** 2 for x in range(1, 11)]\nprint(squares)"
+    },
+    {
+      "id": 60,
+      "category": "List Comprehension",
+      "level": "intermediate",
+      "instruction": "Use list comprehension to filter only even numbers from a list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].",
+      "output": "nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = [x for x in nums if x % 2 == 0]\nprint(evens)"
+    },
+    {
+      "id": 61,
+      "category": "List Comprehension",
+      "level": "intermediate",
+      "instruction": "Use list comprehension to convert a list of strings to uppercase.",
+      "output": "words = ['hello', 'world', 'python', 'code']\nupper = [w.upper() for w in words]\nprint(upper)"
+    },
+    {
+      "id": 62,
+      "category": "List Comprehension",
+      "level": "intermediate",
+      "instruction": "Use dictionary comprehension to create a dictionary of numbers 1 to 5 and their cubes.",
+      "output": "cubes = {x: x**3 for x in range(1, 6)}\nprint(cubes)"
+    },
+    {
+      "id": 63,
+      "category": "List Comprehension",
+      "level": "intermediate",
+      "instruction": "Flatten a 2D list [[1,2,3],[4,5,6],[7,8,9]] using list comprehension.",
+      "output": "matrix = [[1,2,3],[4,5,6],[7,8,9]]\nflat = [n for row in matrix for n in row]\nprint(flat)"
+    },
+    {
+      "id": 64,
+      "category": "String Methods",
+      "level": "beginner",
+      "instruction": "Convert a string to uppercase, lowercase, and title case.",
+      "output": "s = 'hello world'\nprint(s.upper())\nprint(s.lower())\nprint(s.title())"
+    },
+    {
+      "id": 65,
+      "category": "String Methods",
+      "level": "beginner",
+      "instruction": "Strip whitespace from both ends of a string and split it into a list of words.",
+      "output": "s = '  hello world python  '\nprint(s.strip())\nprint(s.strip().split())"
+    },
+    {
+      "id": 66,
+      "category": "String Methods",
+      "level": "beginner",
+      "instruction": "Replace all occurrences of 'Python' with 'Java' in a given string.",
+      "output": "s = 'I love Python. Python is great.'\nresult = s.replace('Python', 'Java')\nprint(result)"
+    },
+    {
+      "id": 67,
+      "category": "String Methods",
+      "level": "intermediate",
+      "instruction": "Check if a string is a palindrome.",
+      "output": "def is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]\n\nprint(is_palindrome('racecar'))\nprint(is_palindrome('hello'))"
+    },
+    {
+      "id": 68,
+      "category": "String Methods",
+      "level": "intermediate",
+      "instruction": "Count the number of vowels in a string.",
+      "output": "def count_vowels(s):\n    return sum(1 for c in s.lower() if c in 'aeiou')\n\nprint(count_vowels('Hello World'))"
+    },
+    {
+      "id": 69,
+      "category": "String Methods",
+      "level": "intermediate",
+      "instruction": "Join a list of words ['Python', 'is', 'awesome'] into a single sentence string.",
+      "output": "words = ['Python', 'is', 'awesome']\nsentence = ' '.join(words)\nprint(sentence)"
+    },
+    {
+      "id": 70,
+      "category": "File Handling",
+      "level": "intermediate",
+      "instruction": "Write a list of names to a text file, one name per line.",
+      "output": "names = ['Alice', 'Bob', 'Charlie', 'Diana']\nwith open('names.txt', 'w') as f:\n    for name in names:\n        f.write(name + '\\n')\nprint('File written successfully')"
+    },
+    {
+      "id": 71,
+      "category": "File Handling",
+      "level": "intermediate",
+      "instruction": "Read a text file and print each line with its line number.",
+      "output": "with open('names.txt', 'r') as f:\n    for i, line in enumerate(f, start=1):\n        print(f'{i}: {line.strip()}')"
+    },
+    {
+      "id": 72,
+      "category": "File Handling",
+      "level": "intermediate",
+      "instruction": "Append a new line to an existing text file.",
+      "output": "with open('names.txt', 'a') as f:\n    f.write('Eve\\n')\nprint('Line appended')"
+    },
+    {
+      "id": 73,
+      "category": "File Handling",
+      "level": "intermediate",
+      "instruction": "Write a Python dictionary as a JSON file and read it back.",
+      "output": "import json\n\ndata = {'name': 'Alice', 'age': 25, 'skills': ['Python', 'ML']}\n\nwith open('data.json', 'w') as f:\n    json.dump(data, f, indent=2)\n\nwith open('data.json', 'r') as f:\n    loaded = json.load(f)\n    print(loaded)"
+    },
+    {
+      "id": 74,
+      "category": "Exception Handling",
+      "level": "intermediate",
+      "instruction": "Write a function to divide two numbers with proper exception handling for division by zero and invalid input.",
+      "output": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        print('Error: Cannot divide by zero')\n        return None\n    except TypeError:\n        print('Error: Invalid input types')\n        return None\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))\nprint(safe_divide('a', 2))"
+    },
+    {
+      "id": 75,
+      "category": "Exception Handling",
+      "level": "intermediate",
+      "instruction": "Create a custom exception class called AgeError and raise it if age is below 0 or above 150.",
+      "output": "class AgeError(Exception):\n    pass\n\ndef validate_age(age):\n    if age < 0 or age > 150:\n        raise AgeError(f'Invalid age: {age}')\n    return True\n\ntry:\n    validate_age(-5)\nexcept AgeError as e:\n    print(e)"
+    },
+    {
+      "id": 76,
+      "category": "Exception Handling",
+      "level": "intermediate",
+      "instruction": "Use try-except-else-finally to safely open and read a file.",
+      "output": "try:\n    f = open('example.txt', 'r')\nexcept FileNotFoundError:\n    print('File not found')\nelse:\n    print(f.read())\n    f.close()\nfinally:\n    print('Execution complete')"
+    },
+    {
+      "id": 77,
+      "category": "Modules & Imports",
+      "level": "beginner",
+      "instruction": "Import the math module and calculate the square root of 144 and the value of pi.",
+      "output": "import math\nprint(math.sqrt(144))\nprint(math.pi)"
+    },
+    {
+      "id": 78,
+      "category": "Modules & Imports",
+      "level": "beginner",
+      "instruction": "Use the random module to generate a random integer between 1 and 100 and a random float.",
+      "output": "import random\nprint(random.randint(1, 100))\nprint(random.random())"
+    },
+    {
+      "id": 79,
+      "category": "Modules & Imports",
+      "level": "intermediate",
+      "instruction": "Use the datetime module to print today's date, current time, and formatted date string.",
+      "output": "from datetime import datetime\nnow = datetime.now()\nprint(now.date())\nprint(now.time())\nprint(now.strftime('%d-%m-%Y %H:%M:%S'))"
+    },
+    {
+      "id": 80,
+      "category": "Modules & Imports",
+      "level": "intermediate",
+      "instruction": "Use the os module to list all files in the current directory and check if a path exists.",
+      "output": "import os\nprint(os.listdir('.'))\nprint(os.path.exists('data.json'))"
+    },
+    {
+      "id": 81,
+      "category": "Modules & Imports",
+      "level": "intermediate",
+      "instruction": "Use the collections module to count the frequency of words in a sentence.",
+      "output": "from collections import Counter\nsentence = 'the cat sat on the mat and the cat'\nwords = sentence.split()\ncount = Counter(words)\nprint(count)\nprint(count.most_common(3))"
+    },
+    {
+      "id": 82,
+      "category": "OOP Basics",
+      "level": "intermediate",
+      "instruction": "Create a class called BankAccount with methods to deposit, withdraw, and check balance.",
+      "output": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n        print(f'Deposited {amount}. Balance: {self.balance}')\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            print('Insufficient funds')\n        else:\n            self.balance -= amount\n            print(f'Withdrawn {amount}. Balance: {self.balance}')\n\n    def get_balance(self):\n        return self.balance\n\nacc = BankAccount('Alice', 1000)\nacc.deposit(500)\nacc.withdraw(200)\nprint(acc.get_balance())"
+    },
+    {
+      "id": 83,
+      "category": "OOP Basics",
+      "level": "intermediate",
+      "instruction": "Write a parent class Shape with an area method, and two child classes Circle and Rectangle that override it.",
+      "output": "import math\n\nclass Shape:\n    def area(self):\n        return 0\n\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n    def area(self):\n        return math.pi * self.radius ** 2\n\nclass Rectangle(Shape):\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n    def area(self):\n        return self.width * self.height\n\nc = Circle(5)\n r = Rectangle(4, 6)\nprint(f'Circle area: {c.area():.2f}')\nprint(f'Rectangle area: {r.area()}')"
+    },
+    {
+      "id": 84,
+      "category": "OOP Basics",
+      "level": "intermediate",
+      "instruction": "Write a class with a class variable, instance variable, and a class method.",
+      "output": "class Employee:\n    company = 'TechCorp'\n    count = 0\n\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n        Employee.count += 1\n\n    @classmethod\n    def get_count(cls):\n        return f'Total employees: {cls.count}'\n\ne1 = Employee('Alice', 50000)\ne2 = Employee('Bob', 60000)\nprint(Employee.get_count())"
+    },
+    {
+      "id": 85,
+      "category": "OOP Basics",
+      "level": "intermediate",
+      "instruction": "Write a class with a static method to validate an email address.",
+      "output": "class Validator:\n    @staticmethod\n    def is_valid_email(email):\n        return '@' in email and '.' in email.split('@')[-1]\n\nprint(Validator.is_valid_email('alice@example.com'))\nprint(Validator.is_valid_email('invalidemail'))"
+    },
+    {
+      "id": 86,
+      "category": "OOP Basics",
+      "level": "intermediate",
+      "instruction": "Implement __str__ and __repr__ methods in a class called Product.",
+      "output": "class Product:\n    def __init__(self, name, price):\n        self.name = name\n        self.price = price\n\n    def __str__(self):\n        return f'{self.name} costs ${self.price}'\n\n    def __repr__(self):\n        return f'Product(name={self.name!r}, price={self.price})'\n\np = Product('Laptop', 999)\nprint(str(p))\nprint(repr(p))"
+    },
+    {
+      "id": 87,
+      "category": "Lambda & Higher Order Functions",
+      "level": "intermediate",
+      "instruction": "Use a lambda function to sort a list of tuples by the second element.",
+      "output": "data = [('Alice', 88), ('Bob', 95), ('Charlie', 72)]\nsorted_data = sorted(data, key=lambda x: x[1], reverse=True)\nprint(sorted_data)"
+    },
+    {
+      "id": 88,
+      "category": "Lambda & Higher Order Functions",
+      "level": "intermediate",
+      "instruction": "Use map() to square all numbers in a list [1, 2, 3, 4, 5].",
+      "output": "nums = [1, 2, 3, 4, 5]\nsquares = list(map(lambda x: x**2, nums))\nprint(squares)"
+    },
+    {
+      "id": 89,
+      "category": "Lambda & Higher Order Functions",
+      "level": "intermediate",
+      "instruction": "Use filter() to keep only positive numbers from [-3, -1, 0, 2, 5, -7, 8].",
+      "output": "nums = [-3, -1, 0, 2, 5, -7, 8]\npositives = list(filter(lambda x: x > 0, nums))\nprint(positives)"
+    },
+    {
+      "id": 90,
+      "category": "Lambda & Higher Order Functions",
+      "level": "intermediate",
+      "instruction": "Use reduce() from functools to find the product of all numbers in a list.",
+      "output": "from functools import reduce\nnums = [1, 2, 3, 4, 5]\nproduct = reduce(lambda x, y: x * y, nums)\nprint(product)"
+    },
+    {
+      "id": 91,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a decorator that logs the function name and arguments every time a function is called.",
+      "output": "def logger(func):\n    def wrapper(*args, **kwargs):\n        print(f'Calling {func.__name__} with args={args} kwargs={kwargs}')\n        result = func(*args, **kwargs)\n        print(f'{func.__name__} returned {result}')\n        return result\n    return wrapper\n\n@logger\ndef add(a, b):\n    return a + b\n\nadd(3, 5)"
+    },
+    {
+      "id": 92,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a generator function that yields infinite even numbers starting from 0.",
+      "output": "def even_numbers():\n    n = 0\n    while True:\n        yield n\n        n += 2\n\ngen = even_numbers()\nfor _ in range(5):\n    print(next(gen))"
+    },
+    {
+      "id": 93,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a context manager using a class that prints 'Start' when entering and 'End' when exiting.",
+      "output": "class MyContext:\n    def __enter__(self):\n        print('Start')\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        print('End')\n        return False\n\nwith MyContext():\n    print('Inside the context')"
+    },
+    {
+      "id": 94,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Use enumerate() and zip() together to pair two lists with index numbers.",
+      "output": "names = ['Alice', 'Bob', 'Charlie']\nscores = [88, 95, 72]\nfor i, (name, score) in enumerate(zip(names, scores), start=1):\n    print(f'{i}. {name}: {score}')"
+    },
+    {
+      "id": 95,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program using list unpacking and the * operator to separate the first, last, and middle elements.",
+      "output": "data = [1, 2, 3, 4, 5, 6, 7]\nfirst, *middle, last = data\nprint('First:', first)\nprint('Middle:', middle)\nprint('Last:', last)"
+    },
+    {
+      "id": 96,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Implement a stack data structure using a Python list with push, pop, and peek operations.",
+      "output": "class Stack:\n    def __init__(self):\n        self.items = []\n\n    def push(self, item):\n        self.items.append(item)\n\n    def pop(self):\n        if not self.is_empty():\n            return self.items.pop()\n        return 'Stack is empty'\n\n    def peek(self):\n        if not self.is_empty():\n            return self.items[-1]\n        return 'Stack is empty'\n\n    def is_empty(self):\n        return len(self.items) == 0\n\ns = Stack()\ns.push(10)\ns.push(20)\ns.push(30)\nprint(s.peek())\nprint(s.pop())\nprint(s.pop())"
+    },
+    {
+      "id": 97,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program to find all prime numbers up to 100 using the Sieve of Eratosthenes.",
+      "output": "def sieve(n):\n    primes = [True] * (n + 1)\n    primes[0] = primes[1] = False\n    for i in range(2, int(n**0.5) + 1):\n        if primes[i]:\n            for j in range(i*i, n+1, i):\n                primes[j] = False\n    return [i for i, p in enumerate(primes) if p]\n\nprint(sieve(100))"
+    },
+    {
+      "id": 98,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a binary search function that returns the index of a target in a sorted list.",
+      "output": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nnums = [1, 3, 5, 7, 9, 11, 13]\nprint(binary_search(nums, 7))\nprint(binary_search(nums, 6))"
+    },
+    {
+      "id": 99,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program to implement a simple calculator that supports +, -, *, / using a dictionary of functions.",
+      "output": "operations = {\n    '+': lambda a, b: a + b,\n    '-': lambda a, b: a - b,\n    '*': lambda a, b: a * b,\n    '/': lambda a, b: a / b if b != 0 else 'Error'\n}\n\ndef calculate(a, op, b):\n    if op in operations:\n        return operations[op](a, b)\n    return 'Invalid operator'\n\nprint(calculate(10, '+', 5))\nprint(calculate(10, '/', 0))\nprint(calculate(6, '*', 7))"
+    },
+    {
+      "id": 100,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Create a Python dataclass for a Student with name, age, and grades fields. Add a method to compute the average grade.",
+      "output": "from dataclasses import dataclass, field\nfrom typing import List\n\n@dataclass\nclass Student:\n    name: str\n    age: int\n    grades: List[float] = field(default_factory=list)\n\n    def average(self):\n        return sum(self.grades) / len(self.grades) if self.grades else 0\n\ns = Student('Alice', 20, [88.0, 92.5, 79.0])\nprint(s)\nprint(f'Average: {s.average():.2f}')"
+    },
+    {
+      "id": 101,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a memoization decorator using a dictionary to cache results of a slow recursive function.",
+      "output": "def memoize(func):\n    cache = {}\n    def wrapper(*args):\n        if args not in cache:\n            cache[args] = func(*args)\n        return cache[args]\n    return wrapper\n\n@memoize\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)\n\nfor i in range(10):\n    print(fib(i), end=' ')"
+    },
+    {
+      "id": 102,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program that uses itertools to generate all combinations of 2 items from a list.",
+      "output": "from itertools import combinations\n\nitems = ['A', 'B', 'C', 'D']\nfor combo in combinations(items, 2):\n    print(combo)"
+    },
+    {
+      "id": 103,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a function to check if two strings are anagrams of each other.",
+      "output": "def are_anagrams(s1, s2):\n    return sorted(s1.lower()) == sorted(s2.lower())\n\nprint(are_anagrams('listen', 'silent'))\nprint(are_anagrams('hello', 'world'))"
+    },
+    {
+      "id": 104,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program to find the second largest number in a list without using sort().",
+      "output": "def second_largest(nums):\n    first = second = float('-inf')\n    for n in nums:\n        if n > first:\n            second = first\n            first = n\n        elif n > second and n != first:\n            second = n\n    return second\n\nprint(second_largest([10, 5, 20, 8, 20, 15]))"
+    },
+    {
+      "id": 105,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a queue data structure using collections.deque with enqueue, dequeue, and peek.",
+      "output": "from collections import deque\n\nclass Queue:\n    def __init__(self):\n        self.items = deque()\n\n    def enqueue(self, item):\n        self.items.append(item)\n\n    def dequeue(self):\n        if self.items:\n            return self.items.popleft()\n        return 'Queue is empty'\n\n    def peek(self):\n        return self.items[0] if self.items else 'Queue is empty'\n\nq = Queue()\nq.enqueue('A')\nq.enqueue('B')\nq.enqueue('C')\nprint(q.peek())\nprint(q.dequeue())\nprint(q.dequeue())"
+    },
+    {
+      "id": 106,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program using regex to validate a phone number in the format XXX-XXX-XXXX.",
+      "output": "import re\n\ndef validate_phone(phone):\n    pattern = r'^\\d{3}-\\d{3}-\\d{4}$'\n    return bool(re.match(pattern, phone))\n\nprint(validate_phone('123-456-7890'))\nprint(validate_phone('12-3456-789'))"
+    },
+    {
+      "id": 107,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program to merge two sorted lists into one sorted list without using sort().",
+      "output": "def merge_sorted(a, b):\n    result = []\n    i = j = 0\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            result.append(a[i])\n            i += 1\n        else:\n            result.append(b[j])\n            j += 1\n    result.extend(a[i:])\n    result.extend(b[j:])\n    return result\n\nprint(merge_sorted([1, 3, 5, 7], [2, 4, 6, 8]))"
+    },
+    {
+      "id": 108,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a class implementing the iterator protocol with __iter__ and __next__ to iterate over a range of numbers.",
+      "output": "class CountUp:\n    def __init__(self, start, stop):\n        self.current = start\n        self.stop = stop\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current >= self.stop:\n            raise StopIteration\n        val = self.current\n        self.current += 1\n        return val\n\nfor n in CountUp(1, 6):\n    print(n)"
+    },
+    {
+      "id": 109,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a function using *args to compute the average of any number of scores.",
+      "output": "def average(*scores):\n    if not scores:\n        return 0\n    return sum(scores) / len(scores)\n\nprint(average(80, 90, 70))\nprint(average(100, 95, 88, 76))"
+    },
+    {
+      "id": 110,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Use Python's property decorator to create a class with a private attribute and getter/setter.",
+      "output": "class Temperature:\n    def __init__(self, celsius):\n        self._celsius = celsius\n\n    @property\n    def celsius(self):\n        return self._celsius\n\n    @celsius.setter\n    def celsius(self, value):\n        if value < -273.15:\n            raise ValueError('Temperature below absolute zero')\n        self._celsius = value\n\n    @property\n    def fahrenheit(self):\n        return self._celsius * 9/5 + 32\n\nt = Temperature(100)\nprint(t.celsius)\nprint(t.fahrenheit)\nt.celsius = 0\nprint(t.fahrenheit)"
+    },
+    {
+      "id": 111,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program that reads a CSV file using the csv module and prints each row as a dictionary.",
+      "output": "import csv\n\n# Writing a sample CSV first\nwith open('students.csv', 'w', newline='') as f:\n    writer = csv.DictWriter(f, fieldnames=['name', 'age', 'grade'])\n    writer.writeheader()\n    writer.writerows([\n        {'name': 'Alice', 'age': 20, 'grade': 'A'},\n        {'name': 'Bob', 'age': 22, 'grade': 'B'}\n    ])\n\n# Reading back\nwith open('students.csv', 'r') as f:\n    reader = csv.DictReader(f)\n    for row in reader:\n        print(dict(row))"
+    },
+    {
+      "id": 112,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a Python program to implement bubble sort on a list.",
+      "output": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n-i-1):\n            if arr[j] > arr[j+1]:\n                arr[j], arr[j+1] = arr[j+1], arr[j]\n    return arr\n\nprint(bubble_sort([64, 34, 25, 12, 22, 11, 90]))"
+    },
+    {
+      "id": 113,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a function that returns a closure — an inner function that multiplies any number by a given factor.",
+      "output": "def multiplier(factor):\n    def multiply(x):\n        return x * factor\n    return multiply\n\ndouble = multiplier(2)\ntriple = multiplier(3)\nprint(double(5))\nprint(triple(7))"
+    },
+    {
+      "id": 114,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a Python program to implement a linked list with append and print operations.",
+      "output": "class Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        curr = self.head\n        while curr.next:\n            curr = curr.next\n        curr.next = new_node\n\n    def print_list(self):\n        curr = self.head\n        while curr:\n            print(curr.data, end=' -> ')\n            curr = curr.next\n        print('None')\n\nll = LinkedList()\nll.append(1)\nll.append(2)\nll.append(3)\nll.print_list()"
+    },
+    {
+      "id": 115,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program to find all permutations of a string 'ABC' using itertools.",
+      "output": "from itertools import permutations\n\nfor p in permutations('ABC'):\n    print(''.join(p))"
+    },
+    {
+      "id": 116,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a thread-safe counter using Python's threading module.",
+      "output": "import threading\n\nclass Counter:\n    def __init__(self):\n        self.value = 0\n        self.lock = threading.Lock()\n\n    def increment(self):\n        with self.lock:\n            self.value += 1\n\ncounter = Counter()\nthreads = [threading.Thread(target=counter.increment) for _ in range(1000)]\nfor t in threads:\n    t.start()\nfor t in threads:\n    t.join()\nprint(counter.value)"
+    },
+    {
+      "id": 117,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a Python function to serialize and deserialize a Python object using pickle.",
+      "output": "import pickle\n\ndata = {'name': 'Alice', 'scores': [90, 85, 92]}\n\n# Serialize\nwith open('data.pkl', 'wb') as f:\n    pickle.dump(data, f)\n\n# Deserialize\nwith open('data.pkl', 'rb') as f:\n    loaded = pickle.load(f)\n    print(loaded)"
+    },
+    {
+      "id": 118,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a function using zip to transpose a matrix (list of lists).",
+      "output": "def transpose(matrix):\n    return [list(row) for row in zip(*matrix)]\n\nm = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nfor row in transpose(m):\n    print(row)"
+    },
+    {
+      "id": 119,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a program using defaultdict to group a list of words by their first letter.",
+      "output": "from collections import defaultdict\n\nwords = ['apple', 'banana', 'avocado', 'blueberry', 'cherry', 'apricot']\ngrouped = defaultdict(list)\nfor word in words:\n    grouped[word[0]].append(word)\nfor letter, ws in sorted(grouped.items()):\n    print(f'{letter}: {ws}')"
+    },
+    {
+      "id": 120,
+      "category": "Intermediate Concepts",
+      "level": "intermediate",
+      "instruction": "Write a Python program using namedtuple to create a Point structure and calculate the distance between two points.",
+      "output": "from collections import namedtuple\nimport math\n\nPoint = namedtuple('Point', ['x', 'y'])\n\ndef distance(p1, p2):\n    return math.sqrt((p2.x - p1.x)**2 + (p2.y - p1.y)**2)\n\np1 = Point(0, 0)\np2 = Point(3, 4)\nprint(f'Distance: {distance(p1, p2)}')"
+    }
+  ]
+}

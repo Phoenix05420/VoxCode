@@ -1,0 +1,810 @@
+{
+  "dataset_info": {
+    "name": "Java Professional - LLM Fine-Tuning Dataset",
+    "format": "instruction + output pairs",
+    "total_samples": 100,
+    "scope": "Java Backend & Core"
+  },
+  "samples": [
+    {
+      "id": 121,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a function in Java for computing the factorial of a positive integer number.",
+      "input": "",
+      "output": "public static long factorial(int n) {\n    if (n == 0) {\n        return 1;\n    }\n    long result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}"
+    },
+    {
+      "id": 122,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program that prints out the sum of the numbers in the array.",
+      "input": "int[] numbers = {1, 2, 3 , 4, 5};",
+      "output": "public class SumOfArray {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3 , 4, 5};\n        int sum = 0;\n        for(int i=0; i < numbers.length;i++) {\n            sum = sum + numbers[i];\n        }\n        System.out.println(\"The sum of numbers in the given array is: \" + sum);\n    }\n}"
+    },
+    {
+      "id": 123,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program that prints out the contents of a given two-dimensional array.",
+      "input": "int[][] arr = {{1,2},{3,4},{5,6}}",
+      "output": "public class TwoDArray {\n\n    public static void main(String[] args) {\n        int[][] arr = {{1,2},{3,4},{5,6}};\n\n        for(int i=0;i<arr.length;i++){\n            for(int j=0;j<arr[i].length;j++){\n                System.out.print(arr[i][j]+\" \");\n            }\n            System.out.println();\n        }\n    }\n}"
+    },
+    {
+      "id": 124,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Describe the basic syntax of a Java function?",
+      "input": "",
+      "output": "A Java function consists of a function name, return type, parameters (arguments), and body. The syntax of a Java function is as follows: \npublic <return type> <function name>(<list of parameters>) { \n    // function body \n    <statements> \n}"
+    },
+    {
+      "id": 125,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java named Puppy that has two instance variables, age and name and two methods, bark and sleep.",
+      "input": "",
+      "output": "public class Puppy { \n   // Instance Variables \n   String name; \n   int age; \n  \n   // Constructor \n   public Puppy(String name, int age){ \n      this.name = name; \n      this.age = age; \n   } \n  \n   // Methods \n   public void bark(){ \n      System.out.println(\"Woof Woof!\"); \n   } \n  \n   public void sleep(){ \n      System.out.println(\"Zzzzzz...\"); \n   } \n}"
+    },
+    {
+      "id": 126,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to reverse a given string.",
+      "input": "",
+      "output": "public class ReverseString\n{ \n\n    public static void main(String[] args) \n    { \n        String input = \"Hello\"; \n        StringBuilder input1 = new StringBuilder(); \n  \n        // append a string into StringBuilder input1 \n        input1.append(input); \n  \n        // reverse StringBuilder input1 \n        input1 = input1.reverse(); \n  \n        // print reversed String \n        System.out.println(input1); \n    } \n}"
+    },
+    {
+      "id": 127,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to generate random numbers",
+      "input": "",
+      "output": "import java.util.Random; \n  \npublic class GenerateRandom { \n  \n    public static void main(String[] args) \n    { \n  \n        Random rand = new Random(); \n  \n        // Generate random integers in range 0 to 999 \n        int x = rand.nextInt(1000); \n        System.out.println(\"Random Integers: \" + x); \n  \n        // Generate Random doubles \n        double y = rand.nextDouble(); \n        System.out.println(\"Random Doubles: \" + y); \n  \n        // Generate Random Boolean \n        boolean z = rand.nextBoolean(); \n        System.out.println(\"Random Boolean: \" + z); \n    } \n}"
+    },
+    {
+      "id": 128,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a function in Java that takes a string and prints the reversed version.",
+      "input": "",
+      "output": "public static void reverseString(String str) { \n    StringBuilder sb = new StringBuilder(); \n  \n    for (int i = str.length() - 1; i >= 0; i--) { \n        sb.append(str.charAt(i)); \n    } \n  \n    System.out.print(sb.toString()); \n}"
+    },
+    {
+      "id": 129,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a function in Java to convert a list of strings to a 2D array.",
+      "input": "list: [\"aa\", \"bb\", \"cc\"]",
+      "output": "public static String[][] convertTo2DArray(List<String> strings) {\n    int n = strings.size();\n    String[][] array = new String[n][1];\n    for (int i = 0; i < n; i++) {\n        array[i][0] = strings.get(i);\n    }\n    return array;\n    \n}"
+    },
+    {
+      "id": 130,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program which takes an integer array as a parameter, sorts the array in ascending order, and returns the sorted array.",
+      "input": "[3, 5, 9, 1, 6]",
+      "output": "public int[] SortIntegerArray(int[] nums)\n{\n    Arrays.sort(nums);\n    return nums;\n}"
+    },
+    {
+      "id": 131,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program to take a given string and replace all occurrences of a given letter with another given letter",
+      "input": "'bbac', 'b', 'a'",
+      "output": "public String ReplaceLetters(String str, char oldChar, char newChar) {\n    return str.replace(oldChar, newChar);\n}"
+    },
+    {
+      "id": 132,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write code in Java to generate the Fibonacci sequence up to N numbers.",
+      "input": "N = 10",
+      "output": "public class Fibonacci { \n  \n    public static void FibonacciN(int n) { \n        int i, f=0, s=1; \n  \n        if (n == 1) \n            System.out.print(f+ \" \"); \n  \n        else { \n            System.out.print(f+\" \"+s+\" \"); \n  \n            for (i = 2; i < n; i++) { \n                int next = f + s; \n                System.out.print(next+\" \"); \n                f= s; \n                s = next; \n            } \n        } \n    } \n}"
+    },
+    {
+      "id": 133,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write code in Java to sort an array of integers in ascending order.",
+      "input": "[5, 2, 8, 10, 4, 9]",
+      "output": "public static void sortAscending(int[] arr) {\n    for(int i = 0; i < arr.length - 1; i++) {\n        int min = i;\n        for (int j = i + 1; j < arr.length; j++) {\n            if (arr[j] < arr[min]) {\n                min = j;\n            }\n        }\n        int tmp = arr[i];\n        arr[i] = arr[min];\n        arr[min] = tmp;\n    }\n}"
+    },
+    {
+      "id": 134,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to calculate the sum of the two given integers.",
+      "input": "Integers: 4 and 9",
+      "output": "public static int addIntegers(int a, int b) {\n    int sum = a + b;\n    return sum;\n}\n\npublic static void main(String[] args) {\n    int x = 4, y = 9;\n    int sum = addIntegers(x, y);\n    System.out.println(\"Sum is: \"+sum);\n}"
+    },
+    {
+      "id": 135,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java that takes two strings as parameters and returns true if the first string is a substring of the second.",
+      "input": "",
+      "output": "public boolean isSubstring(String s1, String s2) \n{ \n    int M = s1.length(); \n    int N = s2.length(); \n  \n    for (int i = 0; i <= N - M; i++) { \n        int j; \n  \n        for (j = 0; j < M; j++) \n            if (s2.charAt(i + j) != s1.charAt(j)) \n                break; \n  \n        if (j == M) \n            return true; \n    } \n  \n    return false; \n}"
+    },
+    {
+      "id": 136,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to print out the first n prime numbers",
+      "input": "",
+      "output": "public static void printPrimeNumbers(int n) \n    { \n        int num; \n        int count=0;\n        for (int i = 2; i <= n;) \n        { \n            num=0; \n            for (int j = 2; j <= i / 2; j++)  \n            { \n                if (i % j == 0) \n                { \n                    num++; \n                    break; \n                } \n            } \n            if (num == 0) \n            { \n                System.out.print(i+\" \"); \n                count++; \n            } \n            i++; \n        } \n    }"
+    },
+    {
+      "id": 137,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to find the largest element in a given array.",
+      "input": "",
+      "output": "public class Largest { \n  \n    static int getLargest(int[] inputArray){ \n        int largest = inputArray[0]; \n        for(int i = 1; i < inputArray.length; i++){ \n            if(inputArray[i] > largest){ \n                largest = inputArray[i]; \n            } \n        } \n        return largest; \n    } \n      \n    public static void main(String[] args){ \n        int[] arr = {10,4,20,5,89}; \n        System.out.println(\"Largest element in the array is: \"+getLargest(arr)); \n    } \n}"
+    },
+    {
+      "id": 138,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a method in Java to return the largest of three numbers.",
+      "input": "",
+      "output": "public static int max(int num1, int num2, int num3) {\nint max = num1;\nif (num2 > max) {\n max = num2;\n}\nif (num3 > max) {\n max = num3;\n}\nreturn max;\n}"
+    },
+    {
+      "id": 139,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Edit the Java code to filter out the persons whose age is less than 18.",
+      "input": "List<Person> persons = new ArrayList<>();\n\nfor (Person person : persons) {\n    System.out.println(person.getName());\n}",
+      "output": "List<Person> persons = new ArrayList<>();\n\nfor (Person person : persons) {\n    if (person.getAge() >= 18) {\n        System.out.println(person.getName());\n    }\n}"
+    },
+    {
+      "id": 140,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write code in Java to create a linked list.",
+      "input": "",
+      "output": "class Node{\n    int data; \n    Node next; \n        \n    Node(int d){\n        data = d; \n        next = null; \n    } \n} \n\nclass LinkedList{ \n    Node head; \n        \n    public void insert(int data){ \n        Node node = new Node(data); \n        if (head == null) { \n            head = node; \n        } \n        else { \n            Node n = head; \n            while (n.next != null) { \n                n = n.next; \n            } \n            n.next = node; \n        } \n    } \n}"
+    },
+    {
+      "id": 141,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Construct a Java program for sorting a given array in ascending order.",
+      "input": "",
+      "output": "public class ArraySort { \n    public static int[] sortArray(int[] arr) { \n        int n = arr.length; \n        for (int i = 0; i < n - 1; i++) { \n            int min_idx = i; \n            for (int j = i + 1; j < n; j++) \n                if (arr[j] < arr[min_idx]) \n                    min_idx = j; \n            int temp = arr[min_idx]; \n            arr[min_idx] = arr[i]; \n            arr[i] = temp; \n        } \n        return arr; \n    } \n}"
+    },
+    {
+      "id": 142,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Implement a Java program for finding the index of an element in a sorted array.",
+      "input": "",
+      "output": "public int binarySearch(int[] arr, int val){\n    int left = 0;\n    int right = arr.length - 1;\n    while (left <= right) {\n        int mid = left + (right - left) /2 ;\n        if (arr[mid] == val) \n            return mid;\n        else if (arr[mid] < val) \n            left = mid + 1;\n        else \n            right = mid - 1;\n    }  \n    return -1;\n}"
+    },
+    {
+      "id": 143,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program to check for a palindrome.",
+      "input": "",
+      "output": "public class Palindrome {  \n    public static boolean isPalindrome(String str){ \n        // Pointers pointing to the beginning \n        // and the end of the string \n        int i = 0, j = str.length() - 1; \n  \n        // While there are characters toc compare \n        while (i < j) { \n  \n            // If there is a mismatch \n            if (str.charAt(i) != str.charAt(j)) \n                return false; \n  \n            // Increment first pointer and \n            // decrement the other \n            i++; \n            j--; \n        } \n  \n        // Given string is a palindrome \n        return true; \n    } \n}"
+    },
+    {
+      "id": 144,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a for loop in Java that iterates over the given array and prints the values.",
+      "input": "Array: int[] arr = {1, 2, 3, 4, 5};",
+      "output": "for (int i = 0; i < arr.length; i++) { \n  System.out.println(arr[i]); \n}"
+    },
+    {
+      "id": 145,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a program in Java to print out the Fibonacci sequence of numbers up to 10.",
+      "input": "",
+      "output": "public class Fibonacci {\n\n  public static void main(String[] args) {\n    int n1=0,n2=1,n3,i,count=10;\n    System.out.print(n1+\" \"+n2);\n    \n    for(i=2;i<count;++i) {\n      n3=n1+n2;\n      System.out.print(\" \"+n3);\n      n1=n2;\n      n2=n3;\n    }   \n  }\n}"
+    },
+    {
+      "id": 146,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a function in Java to find the larger of two integers.",
+      "input": "",
+      "output": "public static int max(int x, int y) {\n    if (x > y)\n      return x;\n    else \n      return y;\n}"
+    },
+    {
+      "id": 147,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program that takes two strings as inputs and checks if one string is a rotation of the other.",
+      "input": "",
+      "output": "import java.util.Arrays;\n \nclass GFG {\n \n    // Function to check if two strings are \n    // rotations of each other or not\n    static boolean areRotations(String str1, String str2)\n    {\n        // There lengths must be same and str2 should \n        // be a substring of str1 concatenated with \n        // str1.\n        return (str1.length() == str2.length())\n            && ((str1 + str1).indexOf(str2) != -1);\n    }\n \n    // Driver program \n    public static void main(String[] args) \n    {\n        String str1 = \"ABACD\";\n        String str2 = \"CDABA\";\n \n        if (areRotations(str1, str2))\n            System.out.println(\"Strings are rotations of each other\");\n        else\n            System.out.println(\"Strings are not rotations of each other\");\n    }\n}"
+    },
+    {
+      "id": 148,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java that takes a string consisting of brackets and output true if the brackets are properly nested, else output false.",
+      "input": "",
+      "output": "public static boolean isBalanced(String str) \n{ \n    if(str.length() == 0) \n        return true; \n      \n    Stack<Character> stack  = new Stack<Character>(); \n  \n    for(int i = 0; i < str.length(); i++) \n    { \n        char current = str.charAt(i); \n          \n        if(current == '{' || current == '(' || current == '[') \n        { \n        stack.push(current); \n        } \n  \n        if(current == '}' || current == ')' || current == ']') \n        { \n            if(stack.isEmpty()) \n                return false; \n  \n            char last = stack.peek(); \n            if(current == '}' && last == '{' || current == ')' && last == '(' || current == ']' && last == '[') \n                stack.pop(); \n            else \n                return false; \n        }\n    } \n \n    return stack.isEmpty(); \n}"
+    },
+    {
+      "id": 149,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create an array in Java with 10 floating-point values and output the average of these values.",
+      "input": "",
+      "output": "// Create an array \nfloat arr[] = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.1};\n\n// Calculate average \nfloat sum = 0;\nfor (int i = 0; i < 10; i++) {\n    sum += arr[i];\n}\n\nfloat average = sum / 10;\nSystem.out.println(\"Average of the array values: \" + average);"
+    },
+    {
+      "id": 150,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Suppose there is an array of numbers. Write a Java program to sort the array in ascending order.",
+      "input": "[3,8,5,1,2,6,4]",
+      "output": "public class SortAscending { \n    public static void main(String[] args) \n    {\n        int[] numbers = {3,8,5,1,2,6,4};\n        int temp = 0;\n        for (int i = 0; i < numbers.length; i++) {\n            for (int j = i+1; j < numbers.length; j++) {\n                if (numbers[i] > numbers[j]) {\n                    //swap elements\n                    temp = numbers[i]; // assign value of i to temp\n                    numbers[i] = numbers[j];  // assign value of j to i\n                    numbers[j] = temp;  // assign value of temp to j\n                }\n            }\n        }\n        System.out.println(\"Array elements in ascending order:\");\n        for (int i = 0; i < numbers.length; i++) { \n            System.out.print(numbers[i]+\" \"); \n        } \n    }\n}"
+    },
+    {
+      "id": 151,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to print the sum of all integers from 1 to given integer.",
+      "input": "integer = 5",
+      "output": "public class SumIntegers {\n \n    public static void main(String[] args) {\n        int n = 5;\n        int sum = 0;\n        for (int i = 1; i <= n; i++) {\n            sum += i;\n        }\n        System.out.println(\"Sum of integers from 1 to \"+n+\": \"+sum);\n    }\n \n}\n// Output: Sum of integers from 1 to 5: 15"
+    },
+    {
+      "id": 152,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to find the sum of elements in a 3x3 matrix.",
+      "input": "",
+      "output": "// Java program to find sum of elements in a matrix \npublic class Matrix \n{ \n\tpublic static void main(String[] args) \n\t{ \n\t\t// Initialize matrix \n\t\tint[][] matrix = {{1, 2, 3}, \n\t\t\t\t\t\t{4, 5, 6}, \n\t\t\t\t\t\t{7, 8, 9}}; \n\n\t\t// Initialize sum \n\t\tint sum = 0; \n\n\t\t// Compute sum of elements \n\t\tfor (int i = 0; i < 3; i++) \n\t\t\tfor (int j = 0; j < 3; j++) \n\t\t\t\tsum = sum + matrix[i][j]; \n\n\t\t// Print Sum \n\t\tSystem.out.println(\"Sum of elements is: \" + sum); \n\t} \n}"
+    },
+    {
+      "id": 153,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Describe in one sentence what is wrong with the following Java code.",
+      "input": "public class Main {\n    public static void main(String[] args) {\n        int y;\n        y = 10 + 5;\n        y -= 30;\n    }\n}",
+      "output": "The code does not do anything with the value of y, meaning that it is not being used."
+    },
+    {
+      "id": 154,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java class that prints the Fibonacci sequence between 0 and 10.",
+      "input": "",
+      "output": "public class Fibonacci {\n\n  public static void main(String[] args) {\n    printFibonacci();\n  }\n\n  public static void printFibonacci() {\n    int n1 = 0;\n    int n2 = 1;\n    int n3;\n\n    System.out.print(n1 + \" \" + n2);\n\n    for (int i = 0; i < 8; i++) {\n      n3 = n1 + n2;\n      System.out.print(\" \" + n3);\n      n1 = n2;\n      n2 = n3;\n    }\n  }\n\n}"
+    },
+    {
+      "id": 155,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create an integer array using Java and sort it using the bubble sort algorithm.",
+      "input": "",
+      "output": "// Create an integer array\nint[] array = {4, 2, 6, 1, 3};\n\n// Sort the array using the bubbleSort function\nbubbleSort(array);\n\n// Write a function to implement the bubbleSort algorithm\npublic static int[] bubbleSort(int[] array) {\n    int len = array.length;\n    for (int i = 0; i < len; i++) {\n        for (int j = 0; j < len; j++) {\n            if (array[j] > array[j+1]) {\n                int temp = array[j];\n                array[j] = array[j+1];\n                array[j+1] = temp;\n            }\n        }\n    }\n    return array;\n}\n// The sorted array is [1, 2, 3, 4, 6]"
+    },
+    {
+      "id": 156,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program that reads two numbers from the user and prints the sum.",
+      "input": "",
+      "output": "import java.util.Scanner;\n\npublic class Sum {\n\npublic static void main(String[] args) {\n \nScanner sc = new Scanner(System.in);\n \nSystem.out.println(\"Enter first number:\");\nint num1 = sc.nextInt();\n \nSystem.out.println(\"Enter second number:\");\nint num2 = sc.nextInt();\n \nint sum = num1 + num2;\n \nSystem.out.println(\"The sum is: \"+sum);\n \n }\n}"
+    },
+    {
+      "id": 157,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a for loop in Java to print all the numbers in a given list.",
+      "input": "int[] list = {21, 34, 54, 77, 92};",
+      "output": "for (int i = 0; i < list.length; i++) {\n System.out.println(list[i]);\n}"
+    },
+    {
+      "id": 158,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java to sort a given array of numbers into ascending order.",
+      "input": "int[] array = {11, 7, 18, 2, 5, 8};",
+      "output": "public static void sortAscending(int[] array) \n{ \n    // Sort the array in ascending order \n    Arrays.sort(array); \n  \n    System.out.println(\"Array in Ascending Order: \"); \n    for (int i = 0; i < array.length; i++)  \n    { \n        System.out.print(array[i] + \" \"); \n    } \n}"
+    },
+    {
+      "id": 159,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Modify the following Java program to find the area of a rectangle.",
+      "input": "public class Area\n{\n public static void main(String[] args)\n {\n double radius = 10;\n double area = 3.14 * radius * radius;\n\n System.out.println(\"The area of the circle = \"+area);\n }\n}",
+      "output": "public class Area\n{\n public static void main(String[] args)\n {\n double length = 10;\n double width = 5;\n double area = length * width;\n\n System.out.println(\"The area of the rectangle = \"+area);\n }\n}"
+    },
+    {
+      "id": 160,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Analyze the given Java code and identify the errors.",
+      "input": "public class TestClass {\n   public static void main (String[] args) {\n      int x = 10;\n      int y = 20\n      int z = x + y;\n      system.out.println(\"The sum is: \" + z);\n   }\n}",
+      "output": "The errors are:\n1. The semicolon at the end of line 2 is missing.\n2. The line 4 should be `System.out.println(\"The sum is: \" + z);` (the capital S is missing).\n3. The line 5 is an extra line which should be removed."
+    },
+    {
+      "id": 161,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java 8 Stream to filter a list of objects by a given field.",
+      "input": "[\n    {'name': 'John', 'age': 20},\n    {'name': 'Smith', 'age': 30},\n    {'name': 'Bill', 'age': 40}\n]",
+      "output": "List<Object> list = Arrays.asList({\n    {'name': 'John', 'age': 20},\n    {'name': 'Smith', 'age': 30},\n    {'name': 'Bill', 'age': 40}\n});\n\nStream<Object> stream = list.stream();\n\n// Filter records whose age greater than 25\nstream.filter(record -> (int) record.get(\"age\") > 25).forEach(System.out::println);"
+    },
+    {
+      "id": 162,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Design a class in Java that can store student information.",
+      "input": "",
+      "output": "public class Student {\n  private String name;\n  private int age;\n  private String course;\n\n  public Student(String name, int age, String course) {\n    this.name = name;\n    this.age = age;\n    this.course = course;\n  }\n\n  public void setName(String name) {\n    this.name = name;\n  }\n  public String getName(){\n    return name;\n  }\n  \n  public void setAge(int age){\n    this.age = age;\n  }\n\n  public int getAge(){\n    return age;\n  }\n  \n  public void setCourse(String course){\n    this.course = course;\n  }\n\n  public String getCourse(){\n    return course;\n  }\n}"
+    },
+    {
+      "id": 163,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java that can store a list of students and the courses they are enrolled in.",
+      "input": "",
+      "output": "public class StudentList {\n  private ArrayList<Student> students;\n  private ArrayList<String> courses;\n\n  public StudentList() {\n    this.students = new ArrayList<Student>();\n    this.courses = new ArrayList<String>();\n  }\n\n  public void addStudent(Student student) {\n    this.students.add(student);\n  }\n  \n  public void addCourse(String course) {\n    this.courses.add(course);\n  }\n  \n  public ArrayList<Student> getStudents() {\n    return this.students;\n  }\n  \n  public ArrayList<String> getCourses() {\n    return this.courses;\n  }\n}"
+    },
+    {
+      "id": 164,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Design a class in Java that can store a list of books and their associated authors.",
+      "input": "",
+      "output": "public class BookCollection {\n  private ArrayList<Book> books;\n  private ArrayList<String> authors;\n\n  public BookCollection() {\n    this.books = new ArrayList<Book>();\n    this.authors = new ArrayList<String>();\n  }\n\n  public void addBook(Book book) {\n    this.books.add(book);\n  }\n  \n  public void addAuthor(String author) {\n    this.authors.add(author);\n  }\n  \n  public ArrayList<Book> getBooks() {\n    return this.books;\n  }\n  \n  public ArrayList<String> getAuthors() {\n    return this.authors;\n  }\n}"
+    },
+    {
+      "id": 165,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Change this existing Java code to generate the \"Jesus Christ\" string.",
+      "input": "String str = \"Holy\";",
+      "output": "String str = \"Holy\";\nString jesusChrist = str + \" \" + \"Jesus Christ\";\nSystem.out.println(jesusChrist);"
+    },
+    {
+      "id": 166,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java Method that takes an array of integers and returns true if the array is sorted in ascending order.",
+      "input": "array = [7, 18, 24, 55, 98]",
+      "output": "public static boolean isSorted(int[] array) { \n    int n = array.length; \n    int temp = array[0]; \n  \n    for (int i = 1; i < n; i++) { \n        if (temp > array[i]) \n            return false; \n        temp = array[i]; \n    } \n  \n    return true; \n}"
+    },
+    {
+      "id": 167,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java method that takes a string and prints out the number of occurrences of each letter in the string.",
+      "input": "String = \"adda123de3f\"",
+      "output": "public static void printLetterOccurrences(String str) {\n    int[] alphabet = new int[26];\n    for (int i = 0; i < str.length(); i++) {\n        if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z')\n            alphabet[str.charAt(i) - 'a']++;\n    }\n    for (int i = 0; i < 26; i++) {\n        if (alphabet[i] > 0) {\n            System.out.println(\"Number of Occurrences of \" + (char)(i + 'a') \n                    + \" is \" + alphabet[i]); \n        }\n    }\n}\n\n// Output\n// Number of Occurrences of a is 2 \n// Number of Occurrences of d is 2 \n// Number of Occurrences of e is 1 \n// Number of Occurrences of f is 1"
+    },
+    {
+      "id": 168,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java class to represent a TV show.",
+      "input": "",
+      "output": "public class TVShow {\n  private String title; \n  private String network;\n  private String genre;\n  private int episodes;\n  \n  public TVShow(String t, String n, String g, int e) {\n    title = t;\n    network = n;\n    genre = g;\n    episodes = e;\n  }\n  \n  public String getTitle() {\n    return title;\n  }\n  \n  public String getNetwork() {\n    return network;\n  }\n  \n  public String getGenre() {\n    return genre;\n  }\n  \n  public int getEpisodes() {\n    return episodes;\n  }\n}"
+    },
+    {
+      "id": 169,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Develop a code in Java to calculate the BMI given the height and weight of a person.",
+      "input": "",
+      "output": "public double calculateBMI(double height, double weight){\n   double bmi;\n   height = height/100;\n   bmi = weight / Math.pow(height, 2);\n   return bmi;\n}"
+    },
+    {
+      "id": 170,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Fill in the blanks at the end of the Java code to find the sum of an array.",
+      "input": "public int sumArray(int[] arr){\n    int sum = 0;\n    ______________\n    ______________\n    return sum;\n}",
+      "output": "public int sumArray(int[] arr){\n    int sum = 0;\n    for(int i=0; i<arr.length;i++){\n        sum+=arr[i];\n    }\n    return sum;\n}"
+    },
+    {
+      "id": 171,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "You should create a Java program to implement a binary search.",
+      "input": "",
+      "output": "public class BinarySearch \n{ \n    // Returns index of x if it is present in arr[l.. \n    // r], else return -1 \n    public int binarySearch(int arr[], int l, int r, int x) \n    { \n        if (r >= l) { \n            int mid = l + (r - l) / 2; \n  \n            // If the element is present at the \n            // middle itself \n            if (arr[mid] == x) \n                return mid; \n  \n            // If element is smaller than mid, then \n            // it can only be present in left subarray \n            if (arr[mid] > x) \n                return binarySearch(arr, l, mid - 1, x); \n  \n            // Else the element can only be present \n            // in right subarray \n            return binarySearch(arr, mid + 1, r, x); \n        } \n  \n        // We reach here when element is not present \n        // in array \n        return -1; \n    } \n  \n}"
+    },
+    {
+      "id": 172,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Construct an if-else statement in Java for printing the square root of a given number.",
+      "input": "",
+      "output": "if (x >= 0) {\n  System.out.println(Math.sqrt(x));\n} else {\nSystem.out.println(\"The number is negative\");\n}"
+    },
+    {
+      "id": 173,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java code to calculate the maximum value in an array.",
+      "input": "",
+      "output": "public static int getMax(int[] array) {\n  int max = array[0];\n  for (int i=1; i < array.length; i++) {\n    if (array[i] > max) {\n        max = array[i];\n    }\n  }\n  return max;\n}"
+    },
+    {
+      "id": 174,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a code in Java to replace all the occurrences of a given value (5) in an array with a new value (10).",
+      "input": "arr = [2, 5, 1, 5, 8]",
+      "output": "for (int i = 0; i < arr.length; i++) { \n    if (arr[i] == 5) \n        arr[i] = 10; \n}"
+    },
+    {
+      "id": 175,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Compile this Java program to determine any compile-time errors.",
+      "input": "public class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello , World\");\n  }\n}",
+      "output": "No compile-time error."
+    },
+    {
+      "id": 176,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Generate Java code to display a message on a GUI.",
+      "input": "",
+      "output": "import javax.swing.JOptionPane;\n \npublic class DisplayMessage {\n \n    public static void main(String[] args) {\n        JOptionPane.showMessageDialog(null, \"Hello world!\", \"Message\", JOptionPane.INFORMATION_MESSAGE);\n    }\n \n}"
+    },
+    {
+      "id": 177,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java to calculate the sum of the even numbers in a given range of integers.",
+      "input": "Start: 10 \nEnd: 20",
+      "output": "// Java Program to calculate the sum of all even \n// numbers in a given range \n\npublic static int sumOfEvenInRange(int n1, int n2) { \n    int sum = 0; \n      \n    // calculating the sum of all even numbers in given range \n    for (int i = n1; i <= n2; i++) { \n        // if num is even then add it \n        if (i % 2 == 0) { \n            sum += i; \n        } \n    } \n    return sum; \n}"
+    },
+    {
+      "id": 178,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Generate a for loop in Java to display all the numbers between 1 and 10.",
+      "input": "",
+      "output": "for (int i = 1; i <= 10; i++) {\n\tSystem.out.println(i);\n}"
+    },
+    {
+      "id": 179,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "In a Java program, write a method to find the longest common subsequence of two strings.",
+      "input": "",
+      "output": "public static String longestCommonSubsequence(String s1,String s2) {\n   int l1 = s1.length();\n   int l2 = s2.length();\n\n   int[][] aux = new int[l1+1][l2+1];\n   for (int i = 0; i < l1; i++) {\n      for (int j = 0; j < l2; j++) {\n         if (s1.charAt(i) == s2.charAt(j))\n            aux[i+1][j+1] = aux[i][j] + 1;\n         else\n            aux[i+1][j+1] = Math.max(aux[i+1][j], aux[i][j+1]);\n      }\n   }\n   StringBuilder sb = new StringBuilder();\n   for (int i = l1, j = l2; i != 0 && j != 0; ) {\n      if (aux[i][j] == aux[i-1][j])\n         i--;\n      else if (aux[i][j] == aux[i][j-1])\n         j--;\n      else {\n         sb.append(s1.charAt(i-1));\n         i--;\n         j--;\n      }\n   }\n   return sb.reverse().toString();\n}"
+    },
+    {
+      "id": 180,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Construct a function in Java to validate whether an input integer is a prime number.",
+      "input": "int n = 7",
+      "output": "public static boolean isPrime(int n) \n{ \n    // Corner case \n    if (n <= 1) \n        return false; \n  \n    // Check from 2 to n-1 \n    for (int i = 2; i < n; i++) \n        if (n % i == 0) \n            return false; \n  \n    return true; \n}"
+    },
+    {
+      "id": 181,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Identify the correct output of this Java program given the input.",
+      "input": "Input: Hello",
+      "output": "Hello"
+    },
+    {
+      "id": 182,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "What is the output of this Java program?",
+      "input": "public class Main {\n    public static void main(String [] args) {\n        String name = \"John\";\n        int age = 34;\n        System.out.println(\"My name is \" + name + \" and I am \" + age + \" years old.\");\n    }\n}",
+      "output": "My name is John and I am 34 years old."
+    },
+    {
+      "id": 183,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to read and print out the characters of a given string one by one.",
+      "input": "Hello World",
+      "output": "class Test \n{ \n  public static void main(String[] args) \n  { \n    String str = \"Hello World\"; \n    for (int i = 0; i < str.length(); i++) { \n        System.out.print(str.charAt(i)); \n    } \n  } \n}"
+    },
+    {
+      "id": 184,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to generate a random number between 25 and 75.",
+      "input": "",
+      "output": "public class RandomNumber {\n    public static void main(String[] args) {\n        // Generate a random number between 25 and 75\n        int max = 75;\n        int min = 25;\n        int range = max - min + 1;\n\n        int randomNumber = (int) (Math.random() * range) + min;\n\n        System.out.println(randomNumber);\n     }\n }"
+    },
+    {
+      "id": 185,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a program in Java that validates an input string for containing only numbers.",
+      "input": "",
+      "output": "public class NumberValidation {\n\n    public boolean isNumeric(String str) {\n        try {\n            Double.parseDouble(str);\n            return true;\n        } catch(NumberFormatException e){\n            return false;\n        }\n    }\n}"
+    },
+    {
+      "id": 186,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java to represent a circle with two fields for its radius and color.",
+      "input": "",
+      "output": "public class Circle { \n    private double radius; \n    private String color; \n  \n    public Circle(double r, String c) \n    { \n        this.radius = r; \n        this.color = c; \n    } \n  \n    public double getRadius() \n    { \n        return this.radius; \n    } \n  \n    public String getColor() \n    { \n        return this.color; \n    } \n  \n    public double getArea() \n    { \n        return Math.PI * this.radius * this.radius; \n    } \n}"
+    },
+    {
+      "id": 187,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to check if a given number is prime.",
+      "input": "int n = 17;",
+      "output": "public class PrimeNumber {\n    public static void main(String[] args) {\n        int n = 17; \n        boolean flag = false;\n        for(int i = 2; i <= n/2; ++i) {\n            if(n % i == 0) {\n                flag = true;\n                break;\n            }\n        }\n        if (!flag)\n            System.out.println(n + \" is a prime number.\");\n        else\n            System.out.println(n + \" is not a prime number.\");\n    }\n}"
+    },
+    {
+      "id": 188,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Design a Java function to convert a string to uppercase.",
+      "input": "",
+      "output": "public String toUpperCase(String str){ \n    char[] charArr = str.toCharArray(); \n\n    for(int i=0; i<str.length(); i++){ \n        if(charArr[i] >= 'a' && charArr[i] <= 'z'){ \n            charArr[i] = (char)(charArr[i] - 32); \n        } \n    } \n\n    return new String(charArr); \n}"
+    },
+    {
+      "id": 189,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java that takes an integer and returns its square.",
+      "input": "",
+      "output": "public static int calculateSquare(int num) {\n    return num * num;\n}"
+    },
+    {
+      "id": 190,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java method to check if a numerical value is within a specified range.",
+      "input": "",
+      "output": "public static boolean isWithinRange(int val, int min, int max) {\n    return (val >= min && val <= max);\n}"
+    },
+    {
+      "id": 191,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java to find the element that appears most frequently in the array.",
+      "input": "[9, 5, 1, 0, 4, 5, 9, 2, 8]",
+      "output": "public static int mostFrequentElement(int[] arr) { \n  int count = 0; \n  int maxCount = 0; \n  int mostFrequent = arr[0]; \n  \n  for (int i = 0; i < arr.length; i++) { \n    count = 0; \n    for (int j = 0; j < arr.length; j++) { \n      if(arr[i] == arr[j]) { \n        count++; \n      } \n      if (count > maxCount) { \n        maxCount = count; \n        mostFrequent = arr[i]; \n      } \n    } \n  } \n  return mostFrequent; \n}"
+    },
+    {
+      "id": 192,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a for loop in Java using the given array.",
+      "input": "int[] nums = {2, 4, 8, 16, 32};",
+      "output": "for (int i = 0; i < nums.length; i++) {\n    int num = nums[i];\n    System.out.println(num);\n}"
+    },
+    {
+      "id": 193,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java function to classify a given set of numbers into even and odd.",
+      "input": "",
+      "output": "public static void classifyNumber(int[] numbers) {\n  for (int num : numbers) {\n      if (num % 2 == 0) {\n          System.out.println(num + \" is even\");\n      } else {\n          System.out.println(num + \" is odd\");\n      }\n  }\n}"
+    },
+    {
+      "id": 194,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a function in Java that returns the number of days between two given dates.",
+      "input": "",
+      "output": "public int getDaysDifference(LocalDate startDate, LocalDate endDate) {\n    return (int) ChronoUnit.DAYS.between(startDate, endDate);\n}"
+    },
+    {
+      "id": 195,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program that displays the area of a triangle, given the three sides.",
+      "input": "3, 4, 5",
+      "output": "public class TriangleArea {\n \n public static void main(String[] args) {\n \n  int a = 3;\n  int b = 4;\n  int c = 5;\n \n  // calculate the semi-perimeter\n  double s = (a + b + c) / 2;\n \n  // calculate the area\n  double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));\n \n  // display the result\n  System.out.println(\"The area of the triangle: \" + area);\n }\n \n}"
+    },
+    {
+      "id": 196,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Rewrite the following JavaScript code in the Java language.",
+      "input": "const numList = [1, 2, 3, 4];\n\nnumList.map((num) => {\n  return num * 2;\n});",
+      "output": "int[] numList = {1, 2, 3, 4};\n\nfor (int i = 0; i < numList.length; i++) {\n  numList[i] = numList[i] * 2;\n}"
+    },
+    {
+      "id": 197,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program that reads an array of integers from the console and prints out the largest number.",
+      "input": "",
+      "output": "import java.util.Scanner;\n\npublic class LargestNum {\n    public static void main(String[] args){\n        Scanner scanner = new Scanner(System.in);\n\n        System.out.print(\"Input the size of array: \");\n        int n = scanner.nextInt();\n\n        int[] arr = new int[n];\n        System.out.println(\"Input \"+n+\" elements in the array:\");\n        for(int i = 0; i < n; i++){\n            arr[i] = scanner.nextInt();\n        }\n\n        int max = arr[0];\n\n        for (int anArr : arr) {\n            if (anArr > max)\n                max = anArr;\n        }\n\n        System.out.println(\"Largest number in the array is \" + max);\n    }\n}"
+    },
+    {
+      "id": 198,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create an algorithm in Java to sort an array in descending order.",
+      "input": "array = [10, 15, 7, 2, 13, 18]",
+      "output": "public static void sortDesc(int[] array) {\n    for(int i = 0; i < array.length; i++) {\n        for(int j = 1; j < array.length; j++) {\n            if(array[j-1] < array[j]) {\n                int temp = array[j-1];\n                array[j-1] = array[j];\n                array[j] = temp;\n            }\n        }\n    }\n}"
+    },
+    {
+      "id": 199,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java for a circle.",
+      "input": "",
+      "output": "class Circle{\n    double radius; \n \n    public Circle(double r){\n        this.radius = r; \n    } \n       \n    public double getArea(){ \n        return Math.PI*radius*radius; \n    } \n}"
+    },
+    {
+      "id": 200,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Develop a Java method to calculate the square root of a given number n.",
+      "input": "",
+      "output": "public static double sqrt(double n) { \n  if (n <= 0); \n  return 0; \n  double g = n; \n  while (Math.abs(g*g - n) > 0.01) {\n    g = (g + n / g) / 2.0; \n  }\n  return g;\n}"
+    },
+    {
+      "id": 201,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Edit the givenjava program to print the count of a specified character.",
+      "input": "public class Main\n{\npublic static void main(String[] args)\n{\n    String str = \"codersarts\";\n    System.out.println(\"Number of s in the given string: \" + str);\n}\n}",
+      "output": "public class Main\n{\npublic static void main(String[] args)\n{\n    String str = \"codersarts\";\n    int count = 0;\n    for (int i=0; i<str.length(); i++) \n    {\n        if (str.charAt(i) == 's') \n        {\n            count++;\n        }\n    }\n    System.out.println(\"Number of s in the given string: \" + count);\n}\n}"
+    },
+    {
+      "id": 202,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program to convert an array of integers into an integer.",
+      "input": "[1,2,3,4]",
+      "output": "public static int convertToInt(int[] arr) {\n    int result = 0;\n    for (int i=0; i<arr.length; i++) {\n        result += arr[i]*Math.pow(10, arr.length-1-i);\n    }\n    return result;\n}"
+    },
+    {
+      "id": 203,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to find the 10 numbers closest to the given number.",
+      "input": "50",
+      "output": "import java.util.Arrays; \n\nclass CloseNumber { \n    \n    // function to find 10 numbers closest to x \n    static void closeNums(int x, int arr[], int n) \n    { \n        // array which stores 10 numbers \n        // closest to x \n        int result[] = new int[10]; \n        int index = 0; \n  \n        // initialize difference between \n        // x and arr[i] \n        int dif = Integer.MAX_VALUE; \n  \n        // traverse in the array and \n        // find the 10 closest numbers \n        for (int i = 0; i < n; i++) { \n            if (x == arr[i]) \n                continue; \n            if (Math.abs(x - arr[i]) < dif) { \n                result[index++] = arr[i]; \n                if (index == 10) { \n                    Arrays.sort(result); \n                    index--; \n                } \n  \n                // update dif \n                if (index > 0) \n                    dif = Math.abs(x - result[index - 1]); \n            } \n        } \n  \n        // print the 10 closest numbers \n        for (int i = 0; i < 10; i++) \n            System.out.print(result[i] + \" \"); \n    } \n  \n    // Driver Code \n    public static void main(String[] args) \n    { \n        int arr[] = { 43, 3, 11, 15, 78, \n                    88, 24, 50, 36, 44 }; \n        int x = 50; \n  \n        int n = arr.length; \n        closeNums(x, arr, n); \n    } \n}"
+    },
+    {
+      "id": 204,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to find the common elements between two arrays.",
+      "input": "int[] arr1 = {1, 2, 3, 4, 5}\nint[] arr2 = {2, 5, 6, 7}",
+      "output": "import java.util.Arrays;\n\npublic class CommonElements {\n    \n    public static void main(String[] args) {\n        int[] arr1 = {1, 2, 3, 4, 5};\n        int[] arr2 = {2, 5, 6, 7};\n        \n        for(int i=0; i < arr1.length; i++){\n            for(int j = 0; j < arr2.length; j++) \n                if(arr1[i] == arr2[j]) \n                    System.out.println(arr1[i]);\n        }\n    }\n}"
+    },
+    {
+      "id": 205,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to read an array of strings and sort them lexicographically (alphabetically).",
+      "input": "String[] arr = {\"apple\", \"cat\", \"hello\"};",
+      "output": "import java.util.Arrays;\n\npublic class SortStrings {\n    \n    public static void main(String[] args) {\n        String[] arr = {\"apple\", \"cat\", \"hello\"};\n        Arrays.sort(arr);\n        for(String s: arr){\n            System.out.println(s);\n        }\n    }\n}\n\n// Output:\napple\ncat\nhello"
+    },
+    {
+      "id": 206,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a function in Java to check if a given string is a palindrome (a word, phrase, or sequence that reads the same backward as forward).",
+      "input": "",
+      "output": "public static boolean isPalindrome(String str) {\n  for(int i=0; i<str.length()/2;i++) {\n    if(str.charAt(i) != str.charAt(str.length()-i-1)) \n      return false;\n  }\n  return true;\n}"
+    },
+    {
+      "id": 207,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a Java program to find the maximum element of an array.",
+      "input": "arr = [2, 3, 1, 4, 5]",
+      "output": "public class Maximum {\n\tpublic static int findMax(int[] arr) {\n\t\tint max = arr[0];\n\t\tfor(int i = 1; i < arr.length; i++) {\n\t\t\tif(arr[i] > max)\n\t\t\t\tmax = arr[i];\n\t\t}\n\t\treturn max;\n\t}\n\n\tpublic static void main(String args[]) {\n\t\tint arr[] = {2, 3, 1, 4, 5};\n\t\tint max = findMax(arr);\n\t\tSystem.out.println(\"Maximum Element: \" + max);\n\t}\n}"
+    },
+    {
+      "id": 208,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java and set its variable members.",
+      "input": "Class Name: Student\nVariables: \n- name: String\n- dob: Date\n- rollNo: int",
+      "output": "public class Student {\n    private String name;\n    private Date dob;\n    private int rollNo;\n\n    public Student(String name, Date dob, int rollNo) {\n        this.name = name;\n        this.dob = dob;\n        this.rollNo = rollNo;\n    }\n}"
+    },
+    {
+      "id": 209,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Convert this python code into Java code",
+      "input": "my_list = [1, 2, 3, 4, 5]\n\nfor i in my_list:\n    if i % 2 == 0:\n        print(i)",
+      "output": "int[] my_list = {1,2,3,4,5};\n\nfor(int i : my_list){\n   if(i % 2 == 0)\n       System.out.println(i);\n}"
+    },
+    {
+      "id": 210,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Edit the following line of code in a Java program to calculate the sum of all elements in an array.",
+      "input": "int sum = 0;\nfor int i = 0; i < nums.length; i--",
+      "output": "int sum = 0;\nfor(int i = 0; i < nums.length; i++) {\n sum += nums[i];\n}"
+    },
+    {
+      "id": 211,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Develop a Java program to rotate a two-dimensional array clockwise by 90 degrees.",
+      "input": "[[1, 2], \n [3, 4]]",
+      "output": "public class RotateMatrix \n{  \n    public static void rotate(int[][] arr, int n) \n    {  \n        for (int x = 0; x < n/2; x++) \n        {     \n            for (int y = x; y < n-x-1; y++) \n            { \n                int temp = arr[x][y];  \n                arr[x][y] = arr[y][n-1-x];  \n                arr[y][n-1-x] = arr[n-1-x][n-1-y];  \n                arr[n-1-x][n-1-y] = arr[n-1-y][x];  \n                arr[n-1-y][x] = temp;  \n            }  \n        }  \n    }  \n}"
+    },
+    {
+      "id": 212,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to convert a binary string to a decimal number.",
+      "input": "",
+      "output": "public class BinaryToDecimal { \n\n\tpublic static int binToDecimal(String binaryNumber)  \n\t{  \n\t\tint decimal = 0;  \n\t\tint power = 0;  \n\t\tfor(int i = binaryNumber.length() - 1; i >= 0; i--)  \n\t\t{   \n\t\t\tif (binaryNumber.charAt(i) == '1') \n\t\t\t\tdecimal += Math.pow(2, power); \n\t\t\tpower++; \n\t\t}  \n\t\treturn decimal;  \n\t}  \n\t\n}"
+    },
+    {
+      "id": 213,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java method that takes a string and returns a copy of the string with all lowercase letters replaced with uppercase letters.",
+      "input": "mixed case",
+      "output": "public static String toUpperCase(String s) {\n    return s.toUpperCase();\n}"
+    },
+    {
+      "id": 214,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to add two large numbers of any length.",
+      "input": "12345 and 54321",
+      "output": "public static String addTwoLargeNumbers(String num1, String num2) { \n    String result= \"\";\n  \n    // make sure num1 is negative and num2 is positive \n    if (compareNumSize(num1, num2) < 0) \n        return addTwoLargeNumbers(num2, num1); \n  \n    // variables to maintain the carry  \n    int carry = 0; \n  \n    // traverse from the end of both the strings \n    int num1_len = num1.length(), num2_len = num2.length(); \n    for (int i = num1_len - 1, j = num2_len - 1; i >= 0 || j >= 0;) { \n  \n        int n1 = i >= 0 ? num1.charAt(i) - '0' : 0; \n        int n2 = j >= 0 ? num2.charAt(j) - '0' : 0; \n  \n        int sum = (n1 + n2 + carry) % 10; \n        carry = (n1 + n2 + carry) / 10; \n  \n        result = sum + result; \n  \n        if (i >= 0) \n            i--; \n        if (j >= 0) \n            j--; \n    } \n  \n    // to add carry if carry exists \n    if (carry > 0) \n        result = carry + result; \n  \n    return result; \n}"
+    },
+    {
+      "id": 215,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Using the Java stream API, create a program that takes a list of integers and returns the number that appears most often in the list.",
+      "input": "[1, 3, 3, 3, 4, 5, 5, 5, 6]",
+      "output": "import java.util.List;\nimport java.util.stream.Collectors;\n\npublic class Solution {\n\n  public static int getMostFrequentNumber(List<Integer> list) {\n    return list.stream()\n        .collect(Collectors.groupingBy(Integer::intValue, Collectors.counting()))\n        .entrySet().stream()\n        .max(Map.Entry.comparingByValue())\n        .get().getKey();\n  }\n}"
+    },
+    {
+      "id": 216,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Create a class in Java that takes two arguments, a name of type String and an id of type int.",
+      "input": "",
+      "output": "public class Person {\n  private String name;\n  private int id;\n\n  public Person(String name, int id) {\n    this.name = name;\n    this.id = id;\n  }\n\n  public String getName() {\n    return name;\n  }\n\n  public int getId() {\n    return id;\n  }\n}"
+    },
+    {
+      "id": 217,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Edit the following Java program to output the sum of the two numbers.",
+      "input": "int firstnum = 5;\nint secondnum = 10;",
+      "output": "int firstnum = 5;\nint secondnum = 10;\n\nint sum = firstnum + secondnum;\nSystem.out.println(\"The sum of the two numbers is: \" + sum);"
+    },
+    {
+      "id": 218,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program that takes the following input parameters and prints their sum to the console.",
+      "input": "int a = 2; int b = 4;",
+      "output": "public class Sum {\n public static void main(String[] args) {\n  int a = 2;\n  int b = 4;\n  \n  int sum = a + b;\n  System.out.println(\"Sum = \" + sum);\n }\n}"
+    },
+    {
+      "id": 219,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Write a Java program to sort the following array of integers using Quick Sort.",
+      "input": "int arr[] = {4, 3, 6, 2, 5, 1};",
+      "output": "public class QuickSort \n{ \n    // Method to implement quick sort \n    public static void quickSort(int[] arr, int low, int high) \n    { \n        if (low < high) \n        { \n            /* pi is partitioning index, arr[pi] is  \n              now at right place */\n            int pi = partition(arr, low, high); \n  \n            // Recursively sort elements before \n            // partition and after partition \n            quickSort(arr, low, pi-1); \n            quickSort(arr, pi+1, high); \n        } \n    } \n  \n    // Method to find partition index \n    public static int partition(int arr[], int low, int high) \n    { \n        int pivot = arr[high];  \n        int i = (low-1); // index of smaller element \n        for (int j=low; j<high; j++) \n        { \n            // If current element is smaller than the pivot \n            if (arr[j] < pivot) \n            { \n                i++; \n  \n                // swap arr[i] and arr[j] \n                int temp = arr[i]; \n                arr[i] = arr[j]; \n                arr[j] = temp; \n            } \n        } \n  \n        // swap arr[i+1] and arr[high] (or pivot) \n        int temp = arr[i+1]; \n        arr[i+1] = arr[high]; \n        arr[high] = temp; \n  \n        return i+1; \n    } \n  \n    // Main method \n    public static void main(String args[]) \n    { \n        int[] arr = {4, 3, 6, 2, 5, 1}; \n        int n = arr.length; \n          \n        quickSort(arr, 0, n-1); \n          \n        /* Print the sorted array */\n        System.out.println(\"Sorted array: \"); \n        for(int i=0; i<n; ++i) \n            System.out.print(arr[i] + \" \"); \n    } \n}"
+    },
+    {
+      "id": 220,
+      "category": "Java Professional",
+      "level": "intermediate",
+      "instruction": "Describe the role of the constructors in  a Java class.",
+      "input": "",
+      "output": "The role of the constructors in a Java class is to initialize the fields of an object. A constructor is a special method that is called when an object is instantiated. Constructors typically have the same name as the class and take in parameters. The parameters are used to initialize the fields of the object. Constructors are important because they allow us to create uniform objects with a well-defined state. Constructors can also be used to set up desired behaviors on objects and to make sure they are initialized properly."
+    }
+  ]
+}
