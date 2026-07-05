@@ -2,33 +2,139 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent-primary: #6366f1;
-  --accent-secondary: #818cf8;
-  --border-color: #e2e8f0;
-  --code-bg: #1e293b;
+  --font-sans: "Sora", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "Consolas", monospace;
+  --bg-primary: #f6f2e9;
+  --bg-secondary: #fffdf7;
+  --bg-tertiary: #efe6d5;
+  --text-primary: #14213d;
+  --text-secondary: #5c6478;
+  --accent-primary: #df6d2d;
+  --accent-secondary: #ffb347;
+  --accent-deep: #113c5d;
+  --border-color: rgba(20, 33, 61, 0.12);
+  --code-bg: #0f172a;
+  --surface-shadow: 0 24px 60px rgba(17, 60, 93, 0.12);
+  --page-gradient:
+    radial-gradient(circle at top left, rgba(255, 179, 71, 0.35), transparent 28%),
+    radial-gradient(circle at top right, rgba(17, 60, 93, 0.14), transparent 26%),
+    linear-gradient(180deg, #fffdf7 0%, #f6f2e9 48%, #efe6d5 100%);
 }
 
 .dark {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-primary: #818cf8;
-  --accent-secondary: #a5b4fc;
-  --border-color: #334155;
+  --bg-primary: #0d111b;
+  --bg-secondary: #121a28;
+  --bg-tertiary: #172233;
+  --text-primary: #f6f0e8;
+  --text-secondary: #aab5c8;
+  --accent-primary: #ff9a5a;
+  --accent-secondary: #ffd166;
+  --accent-deep: #92dce5;
+  --border-color: rgba(246, 240, 232, 0.12);
   --code-bg: #020617;
+  --surface-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --page-gradient:
+    radial-gradient(circle at top left, rgba(255, 154, 90, 0.18), transparent 25%),
+    radial-gradient(circle at top right, rgba(146, 220, 229, 0.18), transparent 24%),
+    linear-gradient(180deg, #0d111b 0%, #121a28 48%, #172233 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-primary);
+  min-height: 100vh;
+  background: var(--page-gradient);
   color: var(--text-primary);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent-primary) 30%, white);
+  color: var(--text-primary);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.brand-ink {
+  color: var(--accent-deep);
+}
+
+.editorial-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.editorial-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(20, 33, 61, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 33, 61, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.35;
+  z-index: -1;
+}
+
+.editorial-card {
+  background: color-mix(in srgb, var(--bg-secondary) 82%, white);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.editorial-panel {
+  background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+  border: 1px solid var(--border-color);
+}
+
+.display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.eyebrow {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.muted-grid {
+  background-image:
+    linear-gradient(rgba(20, 33, 61, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 33, 61, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
 }
 
 /* ─── Custom Animations ─── */
@@ -49,10 +155,39 @@ body {
   50% { transform: scaleY(1.0); }
 }
 
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(0.5%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+
 /* ─── Webform Visualizer ─── */
 .waveform-bar {
   animation: wave 1s ease-in-out infinite;
   transform-origin: bottom;
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle, rgba(20, 33, 61, 0.8) 0.7px, transparent 0.8px);
+  background-size: 10px 10px;
+  animation: grain 12s steps(8) infinite;
 }
 
 /* ─── Code Mirror Theme Overrides (if needed) ─── */
@@ -83,8 +218,103 @@ pre {
 
 /* ─── Glassmorphism ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--bg-secondary) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-color);
+}
+
+/* ─── New App Animations ─── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ─── Responsive Grid ─── */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 3px;
+  }
+}
+
+/* ─── Smooth Transitions ─── */
+* {
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+button, a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Focus Styles ─── */
+*:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
 }

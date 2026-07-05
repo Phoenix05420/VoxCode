@@ -16,7 +16,7 @@ LORA_PATH = None
 #     print(f"[*] FOUND EXTREME ADAPTER: Loading {LORA_PATH}")
 
 settings = Settings(
-    model="X:/AI Model/Qwen3-1.7B-GGUF/Qwen3-1.7B-Q6_K.gguf",
+    model="X:/AI model/opus-v1.2-7b-gguf/opus-v1.2-7b.q4_k_s.gguf",
     lora_path=LORA_PATH,
     n_ctx=4096,
     n_threads=4,  # Matching physical cores for Ryzen 5 7520U

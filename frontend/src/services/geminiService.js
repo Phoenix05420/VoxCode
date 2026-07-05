@@ -6,6 +6,17 @@
 
 const API_BASE = '/api';
 
+const buildHeaders = (token, includeJson = true) => {
+    const headers = {};
+    if (includeJson) {
+        headers['Content-Type'] = 'application/json';
+    }
+    if (token) {
+        headers.Authorization = `Bearer ${token}`;
+    }
+    return headers;
+};
+
 /**
  * Common fetch wrapper with retry and error handling
  */
@@ -62,13 +73,10 @@ export const codeService = {
     /**
      * Generate new code from a prompt
      */
-    async generate(prompt, language, onContent, signal) {
+    async generate(prompt, language, onContent, signal, token) {
         const response = await fetchWithRetry(`${API_BASE}/generate`, {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('voxcode_token')}`
-            },
+            headers: buildHeaders(token),
             body: JSON.stringify({ prompt, language }),
             signal
         });
@@ -83,13 +91,10 @@ export const codeService = {
     /**
      * Optimize existing code
      */
-    async optimize(code, language, onContent, signal) {
+    async optimize(code, language, onContent, signal, token) {
         const response = await fetchWithRetry(`${API_BASE}/optimize`, {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('voxcode_token')}`
-            },
+            headers: buildHeaders(token),
             body: JSON.stringify({ code, language }),
             signal
         });
@@ -104,13 +109,10 @@ export const codeService = {
     /**
      * Explain code step-by-step
      */
-    async explain(code, language, onContent, signal) {
+    async explain(code, language, onContent, signal, token) {
         const response = await fetchWithRetry(`${API_BASE}/explain`, {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('voxcode_token')}`
-            },
+            headers: buildHeaders(token),
             body: JSON.stringify({ code, language }),
             signal
         });

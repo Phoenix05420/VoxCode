@@ -9,3 +9,10 @@ coverage/
 !.env.example
 frontend/node_modules/
 backend/node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+backend/data/sandbox/
+graphify-out/
+workspace-mvp/graphify-out/

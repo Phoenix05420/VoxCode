@@ -1,0 +1,556 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+ * VoxCode — Modern Web Platform CSS Enhancements
+ * ═══════════════════════════════════════════════════════════════════════════════
+ *
+ * Progressive enhancement layer using modern CSS features.
+ * All features are fallback-safe: older browsers simply ignore unsupported rules.
+ *
+ * Features applied:
+ *   1. color-scheme           — Proper OS-level dark mode integration
+ *   2. light-dark()           — Modern dark mode color functions
+ *   3. scrollbar-color        — Themed scrollbars matching the design system
+ *   4. @starting-style        — Entry animations for panels and cards
+ *   5. content-visibility     — Lazy rendering for off-screen content
+ *   6. :user-invalid          — Polite form validation after user interaction
+ *   7. Container Queries      — Component-intrinsic responsive layouts
+ *   8. View Transitions API   — Smooth page transition animations (CSS part)
+ *   9. Popover API            — Styles for native popover-based overlays
+ *  10. field-sizing           — Auto-sizing input fields
+ *  11. text-wrap: balance     — Balanced headline wrapping
+ *  12. accent-color           — Branded form controls
+ * ═══════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 1. COLOR-SCHEME — Tells the browser which color schemes the page supports.
+ *    This ensures native UI elements (scrollbars, form controls, dialogs)
+ *    automatically adapt to the user's OS light/dark preference.
+ *    @see https://web.dev/articles/color-scheme
+ * ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light dark;
+}
+
+/* When the app is explicitly in dark mode via the .dark class */
+.dark {
+  color-scheme: dark;
+}
+
+/* When the app is explicitly in light mode (no .dark class) */
+:root:not(.dark) {
+  color-scheme: light;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 2. LIGHT-DARK() — Modern CSS function that resolves to the first value in
+ *    light mode and the second value in dark mode, based on color-scheme.
+ *    Eliminates the need for separate .dark {} overrides for simple cases.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
+ * ───────────────────────────────────────────────────────────────────────────── */
+@supports (color: light-dark(black, white)) {
+  /* Focus ring color adapts to theme automatically */
+  *:focus-visible {
+    outline-color: light-dark(
+      rgba(223, 109, 45, 0.5),   /* --accent-primary in light */
+      rgba(255, 154, 90, 0.5)    /* --accent-primary in dark  */
+    );
+  }
+
+  /* Selection colors adapt to theme */
+  ::selection {
+    background: light-dark(
+      rgba(223, 109, 45, 0.25),
+      rgba(255, 154, 90, 0.25)
+    );
+  }
+
+  /* Toast notification backdrop tint */
+  .toast-backdrop {
+    background: light-dark(
+      rgba(246, 242, 233, 0.85),
+      rgba(13, 17, 27, 0.85)
+    );
+  }
+
+  /* Code block gutter color */
+  .code-gutter-line {
+    color: light-dark(
+      rgba(92, 100, 120, 0.5),
+      rgba(170, 181, 200, 0.4)
+    );
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 3. SCROLLBAR-COLOR & SCROLLBAR-WIDTH — Standards-based scrollbar theming.
+ *    Replaces non-standard ::-webkit-scrollbar pseudo-elements.
+ *    Works across Firefox, Chrome 121+, Edge, and Safari 18+.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Global scrollbar styling — thin scrollbar with themed thumb and track */
+* {
+  scrollbar-width: thin;
+  scrollbar-color:
+    color-mix(in srgb, var(--accent-primary) 40%, transparent)
+    transparent;
+}
+
+/* Monaco Editor and code areas get a dark-themed scrollbar */
+.monaco-editor,
+[class*="code-bg"],
+.editorial-card .overflow-y-auto {
+  scrollbar-color:
+    color-mix(in srgb, var(--accent-primary) 35%, var(--code-bg))
+    var(--code-bg);
+}
+
+/* History and template list scrollable areas */
+.space-y-4,
+.grid {
+  scrollbar-width: thin;
+}
+
+/* Adapt scrollbar to high-contrast user preferences */
+@media (prefers-contrast: more) {
+  * {
+    scrollbar-color: var(--text-primary) var(--bg-secondary);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 4. @STARTING-STYLE — Defines the initial styles for CSS transitions when
+ *    an element is first rendered in the DOM. This enables smooth entry
+ *    animations without JavaScript, for elements that go from display:none
+ *    to visible, or when first inserted into the DOM.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Editorial cards get a smooth fade + slide-up entry animation */
+@supports (selector(&)) {
+  .editorial-card {
+    transition:
+      opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  /* Editorial panels get a subtle scale-in entrance */
+  .editorial-panel {
+    transition:
+      opacity 0.35s ease-out,
+      transform 0.35s ease-out;
+
+    @starting-style {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+
+  /* Toast notifications slide in from the bottom */
+  [class*="fixed bottom-8 right-8"] {
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+
+  /* Glass navbar fades in on load */
+  .glass {
+    transition:
+      opacity 0.5s ease-out,
+      backdrop-filter 0.5s ease-out;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  /* Popover entry animation (for native popover elements) */
+  [popover] {
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out,
+      overlay 0.3s ease-out allow-discrete,
+      display 0.3s ease-out allow-discrete;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.96);
+    }
+  }
+
+  /* Popover exit animation */
+  [popover]:not(:popover-open) {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 5. CONTENT-VISIBILITY — Defers rendering for off-screen content.
+ *    The browser skips layout, paint, and style for off-screen elements,
+ *    dramatically improving initial render performance on content-heavy pages.
+ *    @see https://web.dev/articles/content-visibility
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* History items and snippet lists: defer rendering until near viewport */
+.vox-lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px; /* Estimated height for layout stability */
+}
+
+/* Template gallery cards when there are many */
+.vox-lazy-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
+}
+
+/* Feature cards on the landing page */
+.vox-lazy-feature {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 6. :USER-INVALID — Shows validation feedback only AFTER the user has
+ *    interacted with a form field, avoiding premature error styling on
+ *    page load. Much better UX than :invalid which fires immediately.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Text inputs and selects show error state only after user interaction */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: #ef4444; /* rose-500 */
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+  outline-color: #ef4444;
+}
+
+/* Valid state after user interaction — subtle success ring */
+input:user-valid:not(:placeholder-shown),
+select:user-valid,
+textarea:user-valid:not(:placeholder-shown) {
+  border-color: color-mix(in srgb, var(--accent-primary) 60%, transparent);
+}
+
+/* Fallback for browsers without :user-invalid support */
+@supports not (selector(:user-invalid)) {
+  input:invalid:not(:focus):not(:placeholder-shown),
+  select:invalid:not(:focus),
+  textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 7. CONTAINER QUERIES — Component-intrinsic responsive design.
+ *    Instead of responding to the viewport width, components adapt
+ *    based on their own container's width. Perfect for reusable cards
+ *    that may appear in sidebars, grids, or full-width layouts.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Define container query contexts on wrapper elements */
+.vox-container {
+  container-type: inline-size;
+  container-name: vox-card;
+}
+
+.vox-stats-container {
+  container-type: inline-size;
+  container-name: vox-stats;
+}
+
+.vox-editor-container {
+  container-type: inline-size;
+  container-name: vox-editor;
+}
+
+/* Stats cards: switch to horizontal layout when container is wide enough */
+@container vox-stats (min-width: 300px) {
+  .vox-stat-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .vox-stat-card .vox-stat-icon {
+    flex-shrink: 0;
+  }
+}
+
+/* Stats cards: compact vertical layout in narrow containers */
+@container vox-stats (max-width: 299px) {
+  .vox-stat-card {
+    text-align: center;
+  }
+
+  .vox-stat-card .vox-stat-icon {
+    margin-inline: auto;
+  }
+}
+
+/* Feature cards: expand description when card container is wide */
+@container vox-card (min-width: 380px) {
+  .vox-feature-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+}
+
+/* Voice command cards: show full prompt text when container is wide */
+@container vox-card (min-width: 320px) {
+  .vox-command-prompt {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+}
+
+/* Editor control surface: stack vertically in narrow containers */
+@container vox-editor (max-width: 600px) {
+  .vox-editor-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 8. VIEW TRANSITIONS API — Smooth cross-fade transitions between page
+ *    navigations in the SPA. These CSS rules define how old and new
+ *    page states animate during a document.startViewTransition() call.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Assign view-transition-name to key page-level elements */
+.vox-page-root {
+  view-transition-name: page-content;
+}
+
+.vox-nav-brand {
+  view-transition-name: nav-brand;
+}
+
+.vox-hero-title {
+  view-transition-name: hero-title;
+}
+
+/* Default cross-fade transition for page content */
+::view-transition-old(page-content) {
+  animation: vox-fade-out 0.25s ease-out both;
+}
+
+::view-transition-new(page-content) {
+  animation: vox-fade-in 0.3s ease-in both;
+}
+
+/* Brand logo morphs smoothly between pages */
+::view-transition-old(nav-brand),
+::view-transition-new(nav-brand) {
+  animation-duration: 0.35s;
+}
+
+/* Hero title transitions with a subtle slide */
+::view-transition-old(hero-title) {
+  animation: vox-slide-out-up 0.25s ease-out both;
+}
+
+::view-transition-new(hero-title) {
+  animation: vox-slide-in-up 0.3s ease-out both;
+}
+
+@keyframes vox-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vox-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes vox-slide-out-up {
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes vox-slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Respect reduced motion preferences for view transitions */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01s !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 9. POPOVER API STYLES — Styles for elements using the native HTML
+ *    popover attribute. Used for voice command help overlays and tooltips.
+ *    @see https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Base popover styling */
+[popover] {
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--bg-secondary) 95%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--surface-shadow);
+  color: var(--text-primary);
+  max-width: min(420px, 90vw);
+  margin: auto;
+
+  /* Remove default popover border from UA stylesheet */
+  inset: unset;
+}
+
+/* Popover used as voice-command help overlay */
+.vox-help-popover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Popover used as tooltip */
+.vox-tooltip-popover {
+  font-size: 0.8rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  max-width: 280px;
+}
+
+/* Popover backdrop overlay */
+[popover]::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 10. FIELD-SIZING — Allows input fields to automatically grow/shrink
+ *     based on their content. Replaces JavaScript-based auto-resize hacks.
+ *     @see https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Auto-sizing for the snippet title input in the code editor */
+.vox-auto-size-input {
+  field-sizing: content;
+  min-width: 6ch;
+  max-width: 100%;
+}
+
+/* Auto-sizing for prompt/search text inputs */
+.vox-auto-size-textarea {
+  field-sizing: content;
+  min-height: 2.5rem;
+  max-height: 12rem;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 11. TEXT-WRAP: BALANCE — Balances line lengths in short blocks of text
+ *     (headings, labels) for more visually even typography.
+ *     @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Display titles benefit from balanced wrapping */
+.display-title {
+  text-wrap: balance;
+}
+
+/* Eyebrow labels: prevent wrapping */
+.eyebrow {
+  text-wrap: nowrap;
+}
+
+/* Long-form body text benefits from pretty wrapping (avoids orphans) */
+.vox-body-text {
+  text-wrap: pretty;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 12. ACCENT-COLOR — Synchronizes native form control colors (checkboxes,
+ *     radio buttons, range sliders, progress bars) with the brand palette.
+ *     @see https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  accent-color: var(--accent-primary);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 13. OVERSCROLL-BEHAVIOR — Prevents scroll chaining from editor panels
+ *     and modal-like areas to the main page, keeping the user's scroll
+ *     contained within the intended area.
+ *     @see https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+/* Monaco editor area and explanation panel shouldn't chain scroll */
+.monaco-editor,
+.vox-scroll-contained {
+  overscroll-behavior: contain;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * 14. PREFERS-REDUCED-MOTION — Respects user accessibility preferences
+ *     by disabling animations and transitions for motion-sensitive users.
+ * ───────────────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floaty {
+    animation: none !important;
+  }
+
+  .waveform-bar {
+    animation: none !important;
+  }
+}

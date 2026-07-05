@@ -5,7 +5,7 @@ import { useCallback } from 'react';
  */
 export const useVoiceFeedback = () => {
     const speak = useCallback((text) => {
-        if (!('speechSynthesis' in window)) {
+        if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
             console.warn('Speech synthesis not supported');
             return;
         }
@@ -17,7 +17,10 @@ export const useVoiceFeedback = () => {
         
         // Find a professional sounding voice if possible
         const voices = window.speechSynthesis.getVoices();
-        const preferredVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) || voices[0];
+        const preferredVoice =
+            voices.find((v) => v.lang?.startsWith('en') && /google|natural|zira/i.test(v.name)) ||
+            voices.find((v) => v.lang?.startsWith('en')) ||
+            voices[0];
         
         if (preferredVoice) utterance.voice = preferredVoice;
         

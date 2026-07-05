@@ -162,6 +162,15 @@ def _listen_loop():
 
 def _process_final_audio():
     global _latest_text, _partial_text, _accumulated_audio
+
+    if whisper_model is None:
+        logger.warning("Whisper model unavailable - keeping Vosk transcript only.")
+        with _state_lock:
+            if _partial_text:
+                _latest_text = (_latest_text + " " + _partial_text).strip()
+            _partial_text = ""
+            _accumulated_audio = []
+        return
     
     logger.info("Processing enhanced audio with Whisper pipeline...")
     full_audio = np.concatenate(_accumulated_audio)
@@ -220,9 +229,10 @@ def start_listening():
     return True
 
 def stop_listening():
-    global _running
+    global _running, _audio_level
     with _state_lock:
         _running = False
+        _audio_level = 0.0
     q.put(None)
 
 def get_transcript():
@@ -240,10 +250,11 @@ def get_audio_level():
 
 def clear_transcript():
     with _state_lock:
-        global _latest_text, _partial_text, _accumulated_audio
+        global _latest_text, _partial_text, _accumulated_audio, _audio_level
         _latest_text = ""
         _partial_text = ""
         _accumulated_audio = []
+        _audio_level = 0.0
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
@@ -262,6 +273,7 @@ speech_service = None # Placeholder for dynamic init if needed, but per current 
 # Actually, speech_service is better as a module-level set of functions here.
 # But api_server expects an object. I'll wrap it or just export the module as 'speech_service'.
 class SpeechServiceWrapper:
+    def init_models(self): return init_models()
     def start_listening(self): return start_listening()
     def stop_listening(self): return stop_listening()
     def get_transcript(self): return get_transcript()

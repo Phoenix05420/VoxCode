@@ -1,9 +1,57 @@
-html, body, #root { height: 100%; margin: 0; }
-body { font-family: Arial, Helvetica, sans-serif; }
-.workspace { display: flex; flex-direction: column; height: 100vh; }
-.topbar { height: 48px; background: #1e1e1e; color: #fff; display: flex; align-items: center; padding: 0 12px; justify-content: space-between; }
-.main { display: flex; flex: 1; overflow: hidden; }
-.sidebar { width: 220px; background: #2d2d2d; color: #e5e5e5; padding: 12px; box-sizing: border-box; overflow: auto; }
-.editor-area { flex: 1; padding: 12px; box-sizing: border-box; background: #1e1e1e; }
-.ai-panel { width: 320px; background: #f5f5f5; padding: 12px; box-sizing: border-box; overflow: auto; }
-.editor-wrapper { height: 100%; border-radius: 4px; overflow: hidden; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for VoxCode */
+@layer base {
+  html, body, #root {
+    @apply h-full m-0;
+  }
+  
+  body {
+    @apply font-sans bg-dark-900 text-dark-50;
+  }
+}
+
+@layer components {
+  .workspace {
+    @apply flex flex-col h-screen;
+  }
+  
+  .topbar {
+    @apply h-16 bg-dark-800 text-white flex items-center px-3 justify-between border-b border-dark-700;
+  }
+  
+  .main {
+    @apply flex flex-1 overflow-hidden;
+  }
+  
+  .sidebar {
+    @apply w-64 bg-dark-800 text-dark-100 p-3 box-border overflow-auto border-r border-dark-700;
+  }
+  
+  .editor-area {
+    @apply flex-1 p-3 box-border bg-dark-900;
+  }
+  
+  .ai-panel {
+    @apply w-80 bg-dark-800 p-3 box-border overflow-auto border-l border-dark-700;
+  }
+  
+  .editor-wrapper {
+    @apply h-full rounded overflow-hidden border border-dark-700;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-accent-blue text-white rounded-lg hover:bg-blue-600 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-dark-700 text-dark-50 rounded-lg hover:bg-dark-600 transition-colors;
+  }
+  
+  .card {
+    @apply bg-dark-800 border border-dark-700 rounded-lg p-4;
+  }
+}
+

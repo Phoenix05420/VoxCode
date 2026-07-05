@@ -1,133 +1,155 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mic, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { ChevronLeft, Mic, ShieldCheck, Sparkles, Zap, ArrowRight, Laptop, Terminal, User } from 'lucide-react';
 
-export const AuthPage = ({ onSuccess }) => {
-    const [isLogin, setIsLogin] = useState(true);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState('');
-    const { login } = useAuth();
+const authNotes = [
+    { icon: ShieldCheck, label: 'Private offline workspace sessions' },
+    { icon: Laptop, label: 'Zero third-party cloud dependency' },
+    { icon: Sparkles, label: 'Personal local snippet library' },
+    { icon: Mic, label: 'Voice-first Vosk & Whisper access' },
+];
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError('');
+export const AuthPage = ({ onBack, onSuccess, onLocalLaunch }) => {
+    const [developerName, setDeveloperName] = useState(() => {
+        return localStorage.getItem('voxcode-developer-name') || 'Local Pro Developer';
+    });
+    const [workspaceRole, setWorkspaceRole] = useState('Full-Stack Voice Engineer');
 
-        const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
-
-        try {
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Something went wrong');
-            }
-
-            login(data.token, data.user);
+    const handleLaunch = () => {
+        if (developerName.trim()) {
+            localStorage.setItem('voxcode-developer-name', developerName.trim());
+        }
+        if (onLocalLaunch) {
+            onLocalLaunch();
+        } else if (onSuccess) {
             onSuccess();
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setIsLoading(false);
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-6 py-12 bg-bg-light">
-            <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px]" />
-            </div>
+        <div className="editorial-shell min-h-screen px-6 py-10 md:px-10">
+            <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="editorial-card grain-overlay relative overflow-hidden rounded-[2.5rem] p-8 text-[color:var(--text-primary)] md:p-10 flex flex-col justify-between">
+                    <div>
+                        <div className="mb-8 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="brand-gradient flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg shadow-orange-500/20">
+                                    <Mic size={24} />
+                                </div>
+                                <div>
+                                    <div className="display-title text-3xl font-bold">VoxCode</div>
+                                    <div className="eyebrow text-[color:var(--text-secondary)]">Studio Access</div>
+                                </div>
+                            </div>
+                            {onBack ? (
+                                <button
+                                    onClick={onBack}
+                                    className="editorial-panel inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[color:var(--text-secondary)] hover:text-[color:var(--accent-primary)] transition-all"
+                                >
+                                    <ChevronLeft size={16} />
+                                    Back
+                                </button>
+                            ) : null}
+                        </div>
 
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="w-full max-w-md"
-            >
-                <div className="text-center mb-10">
-                    <div className="w-16 h-16 vibrant-gradient rounded-2xl flex items-center justify-center neon-glow mx-auto mb-6">
-                        <Mic className="text-white" size={32} />
+                        <motion.div
+                            initial={{ opacity: 0, y: 18 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.45 }}
+                        >
+                            <div className="eyebrow text-[color:var(--accent-primary)]">Self-Contained Studio</div>
+                            <h1 className="display-title mt-5 text-4xl font-bold leading-[0.96] md:text-5xl">
+                                Enter your voice-controlled development workspace.
+                            </h1>
+                            <p className="mt-6 max-w-xl text-base leading-8 text-[color:var(--text-secondary)]">
+                                VoxCode operates entirely on your machine. Customize your local developer profile below and launch directly into your speech-driven code generation environment.
+                            </p>
+                        </motion.div>
                     </div>
-                    <h2 className="text-3xl font-display font-bold mb-2 text-slate-900">
-                        {isLogin ? 'Welcome Back' : 'Create Account'}
-                    </h2>
-                    <p className="text-slate-500">
-                        {isLogin ? 'Sign in to continue your coding journey' : 'Join VoxCode and start coding with your voice'}
-                    </p>
+
+                    <div className="mt-10 grid gap-4">
+                        {authNotes.map(({ icon: Icon, label }) => (
+                            <div key={label} className="editorial-panel flex items-center gap-4 rounded-[1.6rem] px-5 py-4 transition-all hover:translate-x-1">
+                                <div className="brand-gradient flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-md">
+                                    <Icon size={18} />
+                                </div>
+                                <div className="text-sm font-semibold">{label}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-2xl">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div>
-                            <label className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 ml-1">Username</label>
-                            <div className="relative">
-                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.08, duration: 0.5 }}
+                    className="editorial-card rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between"
+                >
+                    <div>
+                        <div className="mb-8">
+                            <div className="eyebrow text-[color:var(--accent-primary)]">Workspace Profile</div>
+                            <h2 className="display-title mt-4 text-3xl font-bold">
+                                Configure your studio identity.
+                            </h2>
+                            <p className="mt-3 text-sm leading-7 text-[color:var(--text-secondary)]">
+                                No third-party accounts or cloud API keys required. Your snippets and preferences are saved locally.
+                            </p>
+                        </div>
+
+                        {/* Developer Profile Setup Card */}
+                        <div className="space-y-6 mb-8 rounded-[2rem] bg-[color:var(--bg-secondary)] p-6 md:p-8 border border-[color:var(--border-color)]">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-[color:var(--text-secondary)] mb-2 flex items-center gap-1.5">
+                                    <User size={14} className="text-[color:var(--accent-primary)]" />
+                                    <span>Developer Name / Handle</span>
+                                </label>
                                 <input
                                     type="text"
-                                    required
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-primary/50 transition-all text-slate-900 placeholder:text-slate-300"
-                                    placeholder="johndoe"
+                                    value={developerName}
+                                    onChange={(e) => setDeveloperName(e.target.value)}
+                                    placeholder="e.g. Alex Pro Developer"
+                                    className="w-full px-5 py-4 rounded-2xl bg-[color:var(--bg-tertiary)] border border-[color:var(--border-color)] text-base font-bold text-[color:var(--text-primary)] placeholder-[color:var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-primary)]/50 transition-all"
                                 />
                             </div>
-                        </div>
 
-                        <div>
-                            <label className="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2 ml-1">Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
-                                <input
-                                    type="password"
-                                    required
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-primary/50 transition-all text-slate-900 placeholder:text-slate-300"
-                                    placeholder="••••••••"
-                                />
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-[color:var(--text-secondary)] mb-2 flex items-center gap-1.5">
+                                    <Terminal size={14} className="text-[color:var(--accent-primary)]" />
+                                    <span>Primary Role / Specialization</span>
+                                </label>
+                                <select
+                                    value={workspaceRole}
+                                    onChange={(e) => setWorkspaceRole(e.target.value)}
+                                    className="w-full px-5 py-4 rounded-2xl bg-[color:var(--bg-tertiary)] border border-[color:var(--border-color)] text-sm font-bold text-[color:var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-primary)]/50 transition-all cursor-pointer"
+                                >
+                                    <option value="Full-Stack Voice Engineer">Full-Stack Voice Engineer</option>
+                                    <option value="Systems & Rust Architect">Systems & Rust Architect</option>
+                                    <option value="AI & Python Backend Specialist">AI & Python Backend Specialist</option>
+                                    <option value="Frontend UI/UX Developer">Frontend UI/UX Developer</option>
+                                </select>
+                            </div>
+
+                            <div className="pt-2">
+                                <button
+                                    onClick={handleLaunch}
+                                    className="w-full brand-gradient py-5 rounded-2xl font-bold text-white shadow-xl shadow-orange-500/20 hover:opacity-95 hover:shadow-orange-500/30 flex items-center justify-center gap-3 text-base transition-all transform hover:-translate-y-0.5"
+                                >
+                                    <Laptop size={20} />
+                                    <span>Launch Voice Studio Workspace</span>
+                                    <ArrowRight size={18} />
+                                </button>
                             </div>
                         </div>
-
-                        {error && (
-                            <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-500 text-sm text-center">
-                                {error}
-                            </div>
-                        )}
-
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full py-4 vibrant-gradient disabled:opacity-50 text-white rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/20"
-                        >
-                            {isLoading ? (
-                                <Loader2 className="animate-spin" />
-                            ) : (
-                                <>
-                                    {isLogin ? 'Sign In' : 'Create Account'}
-                                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                                </>
-                            )}
-                        </button>
-                    </form>
-
-                    <div className="mt-8 text-center">
-                        <button
-                            onClick={() => setIsLogin(!isLogin)}
-                            className="text-sm text-slate-400 hover:text-primary transition-colors"
-                        >
-                            {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
-                        </button>
                     </div>
-                </div>
-            </motion.div>
+
+                    <div className="rounded-2xl bg-[color:var(--bg-tertiary)]/50 p-4 border border-[color:var(--border-color)] text-center">
+                        <p className="text-xs text-[color:var(--text-secondary)] flex items-center justify-center gap-2">
+                            <Zap size={14} className="text-orange-500 animate-pulse" />
+                            <span>Offline Vosk speech engine and local LLM server ready on port 3001.</span>
+                        </p>
+                    </div>
+                </motion.div>
+            </div>
         </div>
     );
 };
