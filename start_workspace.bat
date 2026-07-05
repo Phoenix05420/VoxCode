@@ -1,11 +1,11 @@
 @echo off
 setlocal enabledelayedexpansion
-title VoxCode Extreme Pro+ 🔥💎🚀 (Standard Studio Ignition)
+title VoxCode Workspace MVP 🌐💎🚀
 
 :: ─── 1. Configuration & Path Setup ──────────────────────────────────
 set "ROOT_DIR=%~dp0"
 set "BACKEND_DIR=%ROOT_DIR%backend"
-set "FRONTEND_DIR=%ROOT_DIR%frontend"
+set "WORKSPACE_DIR=%ROOT_DIR%workspace-mvp"
 
 :: Dynamic Python Detection
 set "PYTHON_EXE="
@@ -28,27 +28,26 @@ if not defined PYTHON_EXE (
 )
 
 echo.
-echo  [*]  VOXCODE EXTREME PROTECTIVE (PRO+) - IGNITION  [*]
-echo  ======================================================
+echo  [*]  VOXCODE WORKSPACE MVP - IGNITION  [*]
+echo  ==========================================
 echo  Root Dir   : %ROOT_DIR%
 echo  Python Exe : %PYTHON_EXE%
-echo  Mode       : Standard Multi-Mode Studio + Hot-Reload
+echo  Mode       : Workspace MVP + AI Core
 echo.
 
 :: ─── 2. Clean Stale Processes ────────────────────────────────────────
-echo [0/4]   Cleaning stale processes on ports 8000, 3001, 5173, 5174...
+echo [0/4]   Cleaning stale processes on ports 8000, 3001, 5174...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :8000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3001 2^>nul') do taskkill /F /PID %%a >nul 2>&1
-for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5173 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 
 :: ─── 3. Start AI Model Core (Port 8000) ──────────────────────────────
 echo [1/4]  Starting AI Model Core (Port 8000)...
 start "VoxCode Model Core (Port 8000)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% model_server.py"
 
-:: ─── 4. Start Monaco Studio Frontend (Port 5173) ─────────────────────
-echo [2/4]  Starting Monaco Pro Studio Frontend (Port 5173)...
-start "VoxCode Pro Studio Frontend (Port 5173)" /D "%FRONTEND_DIR%" cmd /k "npm run dev -- --port 5173"
+:: ─── 4. Start Workspace MVP Frontend (Port 5174) ─────────────────────
+echo [2/4]  Starting Workspace MVP Frontend (Port 5174)...
+start "VoxCode Workspace MVP (Port 5174)" /D "%WORKSPACE_DIR%" cmd /k "npm run dev -- --port 5174"
 
 :: ─── 5. Wait for AI Model Core ───────────────────────────────────────
 echo [3/4]  Waiting for AI Model Core to be ready...
@@ -59,29 +58,29 @@ if %ERRORLEVEL% neq 0 (
     echo        -> AI Model Core is ONLINE!
 )
 
-:: ─── 6. Start FastAPI Backend with Hot-Reload (Port 3001) ────────────
-echo [4/4]  Starting FastAPI Backend with Hot-Reload (Port 3001)...
+:: ─── 6. Start FastAPI Backend (Port 3001) ────────────────────────────
+echo [4/4]  Starting FastAPI Backend Engine (Port 3001)...
 start "VoxCode Backend Engine (Port 3001)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% -m uvicorn api_server:app --host 0.0.0.0 --port 3001 --reload"
 
 :: ─── 7. Final Verification & Launch ──────────────────────────────────
 echo        Finalizing startup & verifying endpoints...
 powershell -Command "$p=3001; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
-    echo        -> API Server is ONLINE! (Hot-Reload Enabled)
+    echo        -> API Server is ONLINE!
 )
 
-powershell -Command "$p=5173; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
+powershell -Command "$p=5174; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
-    echo        -> Monaco Studio IDE is ONLINE!
+    echo        -> Workspace MVP is ONLINE!
 )
 
 echo.
-echo  ✅ VOXCODE EXTREME PRO+ IS LIVE! 🚀
+echo  🌐 VOXCODE WORKSPACE MVP IS LIVE! 🚀
 echo  ------------------------------------------------------
-echo  Studio IDE     : http://localhost:5173
+echo  Workspace MVP  : http://localhost:5174
 echo  Backend API    : http://localhost:3001/docs
 echo  AI Model Core  : http://localhost:8000/docs
 echo  ------------------------------------------------------
 echo.
-start http://localhost:5173
+start http://localhost:5174
 exit /b

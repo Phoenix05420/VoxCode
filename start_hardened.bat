@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-title VoxCode Extreme Pro+ 🔥💎🚀 (Standard Studio Ignition)
+title VoxCode Extreme Pro+ 🛡️💎🔒 (Hardened Security Mode)
 
 :: ─── 1. Configuration & Path Setup ──────────────────────────────────
 set "ROOT_DIR=%~dp0"
@@ -28,11 +28,11 @@ if not defined PYTHON_EXE (
 )
 
 echo.
-echo  [*]  VOXCODE EXTREME PROTECTIVE (PRO+) - IGNITION  [*]
-echo  ======================================================
+echo  [*]  VOXCODE EXTREME - ZERO-TRUST HARDENED IGNITION  [*]
+echo  ========================================================
 echo  Root Dir   : %ROOT_DIR%
 echo  Python Exe : %PYTHON_EXE%
-echo  Mode       : Standard Multi-Mode Studio + Hot-Reload
+echo  Mode       : Hardened Security (JWT Auth, CORS, Rate Limits)
 echo.
 
 :: ─── 2. Clean Stale Processes ────────────────────────────────────────
@@ -59,15 +59,15 @@ if %ERRORLEVEL% neq 0 (
     echo        -> AI Model Core is ONLINE!
 )
 
-:: ─── 6. Start FastAPI Backend with Hot-Reload (Port 3001) ────────────
-echo [4/4]  Starting FastAPI Backend with Hot-Reload (Port 3001)...
-start "VoxCode Backend Engine (Port 3001)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% -m uvicorn api_server:app --host 0.0.0.0 --port 3001 --reload"
+:: ─── 6. Start Hardened Backend Engine (Port 3001) ────────────────────
+echo [4/4]  Starting Zero-Trust Hardened Backend Engine (Port 3001)...
+start "VoxCode Hardened Backend (Port 3001)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% -m uvicorn app_hardened:app --host 0.0.0.0 --port 3001 --reload"
 
 :: ─── 7. Final Verification & Launch ──────────────────────────────────
 echo        Finalizing startup & verifying endpoints...
 powershell -Command "$p=3001; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
-    echo        -> API Server is ONLINE! (Hot-Reload Enabled)
+    echo        -> Hardened API Server is ONLINE! (Zero-Trust Enabled)
 )
 
 powershell -Command "$p=5173; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
@@ -76,10 +76,10 @@ if %ERRORLEVEL% eq 0 (
 )
 
 echo.
-echo  ✅ VOXCODE EXTREME PRO+ IS LIVE! 🚀
+echo  🛡️ VOXCODE EXTREME HARDENED MODE IS LIVE! 🔒
 echo  ------------------------------------------------------
 echo  Studio IDE     : http://localhost:5173
-echo  Backend API    : http://localhost:3001/docs
+echo  Hardened API   : http://localhost:3001/docs
 echo  AI Model Core  : http://localhost:8000/docs
 echo  ------------------------------------------------------
 echo.
