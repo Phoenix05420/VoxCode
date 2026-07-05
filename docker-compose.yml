@@ -44,24 +44,24 @@ services:
       - voxcode-network
     command: flask run --host=0.0.0.0
 
-  # React Frontend
+  # Next.js Frontend
   frontend:
     build:
-      context: ./workspace-mvp
+      context: ./frontend-next
       dockerfile: Dockerfile
     container_name: voxcode-frontend
     environment:
-      VITE_API_BASE_URL: http://localhost:5000/api
+      NEXT_PUBLIC_API_URL: http://localhost:5000/api
     ports:
-      - "5173:5173"
+      - "3000:3000"
     volumes:
-      - ./workspace-mvp:/app
+      - ./frontend-next:/app
       - /app/node_modules
     depends_on:
       - backend
     networks:
       - voxcode-network
-    command: npm run dev -- --host 0.0.0.0
+    command: npm run dev -- -p 3000 --hostname 0.0.0.0
 
 volumes:
   postgres_data:

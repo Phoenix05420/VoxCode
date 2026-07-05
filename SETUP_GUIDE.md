@@ -16,7 +16,7 @@
 docker-compose up
 
 # Services will be available at:
-# - Frontend: http://localhost:5173
+# - Frontend: http://localhost:3000
 # - Backend API: http://localhost:5000
 # - Database: localhost:5432
 ```
@@ -42,16 +42,16 @@ flask run
 # API available at http://localhost:5000
 ```
 
-#### 2. Frontend Setup
+#### 2. Frontend Setup (Next.js 16 App Router)
 ```bash
-cd workspace-mvp
+cd frontend-next
 
 # Install dependencies (one-time)
 npm install
 
 # Start dev server
 npm run dev
-# Frontend available at http://localhost:5173
+# Frontend available at http://localhost:3000
 ```
 
 #### 3. Database Setup (PostgreSQL)
@@ -118,8 +118,8 @@ CORS_ORIGINS=http://localhost:5173,http://localhost:3000
 
 #### Frontend (.env.local)
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
-VITE_ENV=development
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_ENV=development
 ```
 
 ### Database Initialization
@@ -143,20 +143,20 @@ docker-compose up
 # Terminal 1: Backend
 cd backend && flask run
 
-# Terminal 2: Frontend
-cd workspace-mvp && npm run dev
+# Terminal 2: Frontend (Next.js)
+cd frontend-next && npm run dev
 
 # Terminal 3: (Optional) Database
 # Ensure PostgreSQL is running on port 5432
 ```
 
 ### 2. Make Changes
-- **Frontend changes** → Hot reload automatic (Vite)
+- **Frontend changes** → Hot reload automatic (Next.js Fast Refresh)
 - **Backend changes** → Hot reload automatic (Flask debug mode)
 - **Database schema changes** → Run migrations: `flask db migrate && flask db upgrade`
 
 ### 3. Test Locally
-- **Frontend**: http://localhost:5173
+- **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:5000
 - **API Health Check**: `curl http://localhost:5000/api/health`
 
@@ -224,13 +224,13 @@ Response: { status: 'ok', service: 'voxcode-api', timestamp: '...', version: '0.
 
 ### "Port Already in Use"
 ```bash
-# Find and kill process using port 5000/5173
+# Find and kill process using port 5000/3000/5173
 # Windows
-netstat -ano | findstr :5000
+netstat -ano | findstr :3000
 taskkill /PID <PID> /F
 
 # macOS/Linux
-lsof -i :5000
+lsof -i :3000
 kill -9 <PID>
 ```
 

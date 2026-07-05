@@ -5,7 +5,7 @@ title VoxCode Extreme Pro+ 🛡️💎🔒 (Hardened Security Mode)
 :: ─── 1. Configuration & Path Setup ──────────────────────────────────
 set "ROOT_DIR=%~dp0"
 set "BACKEND_DIR=%ROOT_DIR%backend"
-set "FRONTEND_DIR=%ROOT_DIR%frontend"
+set "FRONTEND_DIR=%ROOT_DIR%frontend-next"
 
 :: Dynamic Python Detection
 set "PYTHON_EXE="
@@ -36,8 +36,9 @@ echo  Mode       : Hardened Security (JWT Auth, CORS, Rate Limits)
 echo.
 
 :: ─── 2. Clean Stale Processes ────────────────────────────────────────
-echo [0/4]   Cleaning stale processes on ports 8000, 3001, 5173, 5174...
+echo [0/4]   Cleaning stale processes on ports 8000, 3000, 3001, 5173, 5174...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :8000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3001 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5173 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F /PID %%a >nul 2>&1
@@ -46,9 +47,9 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F
 echo [1/4]  Starting AI Model Core (Port 8000)...
 start "VoxCode Model Core (Port 8000)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% model_server.py"
 
-:: ─── 4. Start Monaco Studio Frontend (Port 5173) ─────────────────────
-echo [2/4]  Starting Monaco Pro Studio Frontend (Port 5173)...
-start "VoxCode Pro Studio Frontend (Port 5173)" /D "%FRONTEND_DIR%" cmd /k "npm run dev -- --port 5173"
+:: ─── 4. Start Next.js Studio Frontend (Port 3000) ─────────────────────
+echo [2/4]  Starting Next.js Pro Studio Frontend (Port 3000)...
+start "VoxCode Pro Studio Frontend (Port 3000)" /D "%FRONTEND_DIR%" cmd /k "npm run dev -- --port 3000"
 
 :: ─── 5. Wait for AI Model Core ───────────────────────────────────────
 echo [3/4]  Waiting for AI Model Core to be ready...
@@ -70,18 +71,18 @@ if %ERRORLEVEL% eq 0 (
     echo        -> Hardened API Server is ONLINE! (Zero-Trust Enabled)
 )
 
-powershell -Command "$p=5173; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
+powershell -Command "$p=3000; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
-    echo        -> Monaco Studio IDE is ONLINE!
+    echo        -> Next.js Studio IDE is ONLINE!
 )
 
 echo.
 echo  🛡️ VOXCODE EXTREME HARDENED MODE IS LIVE! 🔒
 echo  ------------------------------------------------------
-echo  Studio IDE     : http://localhost:5173
+echo  Studio IDE     : http://localhost:3000
 echo  Hardened API   : http://localhost:3001/docs
 echo  AI Model Core  : http://localhost:8000/docs
 echo  ------------------------------------------------------
 echo.
-start http://localhost:5173
+start http://localhost:3000
 exit /b

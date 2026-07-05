@@ -5,7 +5,7 @@ title VoxCode Workspace MVP 🌐💎🚀
 :: ─── 1. Configuration & Path Setup ──────────────────────────────────
 set "ROOT_DIR=%~dp0"
 set "BACKEND_DIR=%ROOT_DIR%backend"
-set "WORKSPACE_DIR=%ROOT_DIR%workspace-mvp"
+set "WORKSPACE_DIR=%ROOT_DIR%frontend-next"
 
 :: Dynamic Python Detection
 set "PYTHON_EXE="
@@ -36,8 +36,9 @@ echo  Mode       : Workspace MVP + AI Core
 echo.
 
 :: ─── 2. Clean Stale Processes ────────────────────────────────────────
-echo [0/4]   Cleaning stale processes on ports 8000, 3001, 5174...
+echo [0/4]   Cleaning stale processes on ports 8000, 3000, 3001, 5174...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :8000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3001 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 
@@ -45,9 +46,9 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F
 echo [1/4]  Starting AI Model Core (Port 8000)...
 start "VoxCode Model Core (Port 8000)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% model_server.py"
 
-:: ─── 4. Start Workspace MVP Frontend (Port 5174) ─────────────────────
-echo [2/4]  Starting Workspace MVP Frontend (Port 5174)...
-start "VoxCode Workspace MVP (Port 5174)" /D "%WORKSPACE_DIR%" cmd /k "npm run dev -- --port 5174"
+:: ─── 4. Start Next.js Workspace Frontend (Port 3000) ─────────────────────
+echo [2/4]  Starting Next.js Workspace Frontend (Port 3000)...
+start "VoxCode Next.js Workspace (Port 3000)" /D "%WORKSPACE_DIR%" cmd /k "npm run dev -- --port 3000"
 
 :: ─── 5. Wait for AI Model Core ───────────────────────────────────────
 echo [3/4]  Waiting for AI Model Core to be ready...
@@ -69,18 +70,18 @@ if %ERRORLEVEL% eq 0 (
     echo        -> API Server is ONLINE!
 )
 
-powershell -Command "$p=5174; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
+powershell -Command "$p=3000; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
-    echo        -> Workspace MVP is ONLINE!
+    echo        -> Next.js Workspace is ONLINE!
 )
 
 echo.
 echo  🌐 VOXCODE WORKSPACE MVP IS LIVE! 🚀
 echo  ------------------------------------------------------
-echo  Workspace MVP  : http://localhost:5174
+echo  Next.js Studio : http://localhost:3000
 echo  Backend API    : http://localhost:3001/docs
 echo  AI Model Core  : http://localhost:8000/docs
 echo  ------------------------------------------------------
 echo.
-start http://localhost:5174
+start http://localhost:3000
 exit /b

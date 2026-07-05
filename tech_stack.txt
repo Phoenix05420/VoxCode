@@ -20,6 +20,14 @@
 * **Uvicorn & FastAPI** 
   * Why: Under-the-hood ASGI servers used powerfully by `llama-cpp-python` for streaming text tokens chunk-by-chunk over Server-Sent Events (SSE).
 
+## Frontend Architecture & UI
+* **Next.js 16 (App Router) & React 19**
+  * Why: Provides enterprise-grade React architecture with server-side rendering (SSR), dynamic code splitting, React Suspense boundaries, and built-in API routing rewrites.
+* **Monaco Editor (`@monaco-editor/react`)**
+  * Why: The exact code editor engine powering VS Code, integrated with custom dark ink styling for our "Light & Tiny Dark" aesthetic.
+* **Tailwind CSS v4 & Framer Motion**
+  * Why: Delivers crisp utility styling and fluid micro-animations across interactive widgets and voice input visualizers.
+
 ## Database & Storage
 * **NeonDB PostgreSQL & `psycopg2-binary`** 
   * Why: A highly scalable, serverless SQL database used to manage user authentication and the cloud synchronization of their stored code snippets. `psycopg2-binary` is the standard, battle-tested DB adapter to bridge Python and Postgres safely.

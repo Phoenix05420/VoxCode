@@ -11,14 +11,15 @@ VoxCode is a production-grade, advanced-level voice-controlled programming assis
 -   **NLP Service:** Deep linguistic analysis with **spaCy**. Features a coding-specific dictionary (100+ entries) and abbreviation expansion (e.g., `fn` → `function`).
 -   **Template Service:** Idiomatic code scaffolding for 12+ languages including Rust, Go, Swift, and Kotlin.
 
-### 🎨 Frontend (React / Vite)
--   **Dashboard:** Premium UI with Glassmorphism effects, full Dark Mode support, and real-time audio waveform visualization.
--   **Pro Hooks:** Adaptive polling hooks with audio RMS monitoring and stream processing for AI responses.
+### 🎨 Frontend (Next.js 16 App Router)
+-   **Framework:** **Next.js 16 (App Router)** with React 19, Server-Side Rendering (SSR), React `<Suspense>` boundaries, and dynamic code splitting.
+-   **Theme System:** Custom **"Light & Tiny Dark"** aesthetic featuring crisp light canvas backgrounds (`#FAFBFC`) paired with refined, sleek dark charcoal/ink accents across sidebars, IDE consoles, and terminal panels.
+-   **Dashboard & IDE:** Pro Studio with Monaco Editor, interactive 4-mode execution compiler (AST audit, RAM trace, Unit tests), and real-time audio waveform visualizer.
 -   **Interactions:** Toast-based notification system, step-by-step code explanation mode, and 45+ domain-specific voice shortcuts.
 
 ## 🛠️ Stack
 -   **Backend:** Python 3.11, Flask, PostgreSQL (NeonDB), Whisper, Vosk, spaCy, BART, NLTK.
--   **Frontend:** React 19, Vite, Tailwind CSS, Lucide icons, Prism.js.
+-   **Frontend:** Next.js 16 (App Router), React 19, Tailwind CSS v4, Lucide icons, Monaco Editor, Framer Motion.
 -   **DevOps:** Local LLM hosting (Llama-CPP), structured logging, health metrics.
 
 ## 📦 Installation
