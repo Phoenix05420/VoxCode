@@ -63,7 +63,7 @@ class Config:
     
     # ━━━ CORS - RESTRICTED ━━━
     # Default: development with localhost only
-    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000').split(',')
+    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000,http://localhost:3002').split(',')
     CORS_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
     CORS_ALLOW_HEADERS = ['Content-Type', 'Authorization']
     CORS_EXPOSE_HEADERS = ['Content-Length', 'X-Total-Count']
@@ -90,8 +90,10 @@ class DevelopmentConfig(Config):
     CORS_ORIGINS = [
         'http://localhost:5173',     # Vite frontend
         'http://localhost:3000',      # Alternative frontend
+        'http://localhost:3002',      # Next.js frontend
         'http://127.0.0.1:5173',
         'http://127.0.0.1:3000',
+        'http://127.0.0.1:3002',
     ]
     
     # Development database - in-memory SQLite

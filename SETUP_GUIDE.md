@@ -16,7 +16,7 @@
 docker-compose up
 
 # Services will be available at:
-# - Frontend: http://localhost:3000
+# - Frontend: http://localhost:3002
 # - Backend API: http://localhost:5000
 # - Database: localhost:5432
 ```
@@ -51,7 +51,7 @@ npm install
 
 # Start dev server
 npm run dev
-# Frontend available at http://localhost:3000
+# Frontend available at http://localhost:3002
 ```
 
 #### 3. Database Setup (PostgreSQL)
@@ -113,7 +113,7 @@ FLASK_ENV=development
 FLASK_DEBUG=True
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/voxcode_dev
 JWT_SECRET_KEY=your-jwt-secret
-CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+CORS_ORIGINS=http://localhost:5173,http://localhost:3000,http://localhost:3002
 ```
 
 #### Frontend (.env.local)
@@ -156,7 +156,7 @@ cd frontend-next && npm run dev
 - **Database schema changes** → Run migrations: `flask db migrate && flask db upgrade`
 
 ### 3. Test Locally
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:3002
 - **Backend API**: http://localhost:5000
 - **API Health Check**: `curl http://localhost:5000/api/health`
 
@@ -224,13 +224,13 @@ Response: { status: 'ok', service: 'voxcode-api', timestamp: '...', version: '0.
 
 ### "Port Already in Use"
 ```bash
-# Find and kill process using port 5000/3000/5173
+# Find and kill process using port 5000/3002/5173
 # Windows
-netstat -ano | findstr :3000
+netstat -ano | findstr :3002
 taskkill /PID <PID> /F
 
 # macOS/Linux
-lsof -i :3000
+lsof -i :3002
 kill -9 <PID>
 ```
 

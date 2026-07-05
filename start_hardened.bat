@@ -36,10 +36,10 @@ echo  Mode       : Hardened Security (JWT Auth, CORS, Rate Limits)
 echo.
 
 :: ─── 2. Clean Stale Processes ────────────────────────────────────────
-echo [0/4]   Cleaning stale processes on ports 8000, 3000, 3001, 5173, 5174...
+echo [0/4]   Cleaning stale processes on ports 8000, 3000, 3001, 3002, 5173, 5174...
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :8000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
-for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3000 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3001 2^>nul') do taskkill /F /PID %%a >nul 2>&1
+for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3002 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5173 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F /PID %%a >nul 2>&1
 
@@ -47,9 +47,9 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr :5174 2^>nul') do taskkill /F
 echo [1/4]  Starting AI Model Core (Port 8000)...
 start "VoxCode Model Core (Port 8000)" /D "%BACKEND_DIR%" cmd /k "%PYTHON_EXE% model_server.py"
 
-:: ─── 4. Start Next.js Studio Frontend (Port 3000) ─────────────────────
-echo [2/4]  Starting Next.js Pro Studio Frontend (Port 3000)...
-start "VoxCode Pro Studio Frontend (Port 3000)" /D "%FRONTEND_DIR%" cmd /k "npm run dev -- --port 3000"
+:: ─── 4. Start Next.js Studio Frontend (Port 3002) ─────────────────────
+echo [2/4]  Starting Next.js Pro Studio Frontend (Port 3002)...
+start "VoxCode Pro Studio Frontend (Port 3002)" /D "%FRONTEND_DIR%" cmd /k "npm run dev -- --port 3002"
 
 :: ─── 5. Wait for AI Model Core ───────────────────────────────────────
 echo [3/4]  Waiting for AI Model Core to be ready...
@@ -71,7 +71,7 @@ if %ERRORLEVEL% eq 0 (
     echo        -> Hardened API Server is ONLINE! (Zero-Trust Enabled)
 )
 
-powershell -Command "$p=3000; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
+powershell -Command "$p=3002; $start=Get-Date; while(1) { $s=New-Object System.Net.Sockets.TcpClient; try { $t=$s.ConnectAsync('127.0.0.1',$p); if($t.Wait(500)) { $s.Close(); break } } catch {} finally { $s.Dispose() }; if((Get-Date)-$start -gt [TimeSpan]::FromSeconds(30)) { exit 1 }; Start-Sleep -Milliseconds 500 }"
 if %ERRORLEVEL% eq 0 (
     echo        -> Next.js Studio IDE is ONLINE!
 )
@@ -79,10 +79,10 @@ if %ERRORLEVEL% eq 0 (
 echo.
 echo  🛡️ VOXCODE EXTREME HARDENED MODE IS LIVE! 🔒
 echo  ------------------------------------------------------
-echo  Studio IDE     : http://localhost:3000
+echo  Studio IDE     : http://localhost:3002
 echo  Hardened API   : http://localhost:3001/docs
 echo  AI Model Core  : http://localhost:8000/docs
 echo  ------------------------------------------------------
 echo.
-start http://localhost:3000
+start http://localhost:3002
 exit /b
