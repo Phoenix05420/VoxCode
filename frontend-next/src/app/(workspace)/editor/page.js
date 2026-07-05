@@ -244,7 +244,7 @@ function EditorContent() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)] space-y-3 pb-4 animate-fadeIn">
+    <div className="flex flex-col h-[calc(100vh-120px)] space-y-3 pb-4 animate-fadeIn">
       {/* Toast Notification */}
       {toast && (
         <div className={cn("toast", `toast-${toast.type}`)}>
@@ -484,7 +484,7 @@ function EditorContent() {
 
 export default function EditorPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-[calc(100vh-80px)]"><LoadingSpinner size="lg" /></div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-[calc(100vh-120px)]"><LoadingSpinner size="lg" /></div>}>
       <EditorContent />
     </Suspense>
   );

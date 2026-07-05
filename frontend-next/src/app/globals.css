@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-rose: var(--accent-rose);
+  --color-accent-ink: var(--bg-accent-ink);
+  --color-accent-charcoal: var(--bg-accent-charcoal);
+  --color-accent-slate: var(--bg-accent-slate);
+  --color-accent-dark: var(--bg-accent-dark);
+}
+
 /* ══════════════════════════════════════════════════════════════
    VoxCode – "Light & Tiny Dark" Theme System
    A predominantly light theme with refined dark accent elements
@@ -272,6 +284,56 @@ body {
   background: rgba(244, 63, 94, 0.1);
   color: var(--accent-rose);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Explicit Theme Utility Classes (Tailwind v4 Compatibility)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Backgrounds */
+.bg-primary { background-color: var(--bg-primary) !important; }
+.bg-secondary { background-color: var(--bg-secondary) !important; }
+.bg-tertiary { background-color: var(--bg-tertiary) !important; }
+.bg-elevated { background-color: var(--bg-elevated) !important; }
+.bg-subtle { background-color: var(--bg-subtle) !important; }
+.bg-sunken { background-color: var(--bg-sunken) !important; }
+.bg-accent-violet-bg { background-color: var(--accent-violet-bg) !important; }
+.bg-accent-blue-bg { background-color: var(--accent-blue-bg) !important; }
+.bg-accent-emerald-bg { background-color: var(--accent-emerald-bg) !important; }
+.bg-accent-amber-bg { background-color: var(--accent-amber-bg) !important; }
+.bg-accent-rose-bg { background-color: var(--accent-rose-bg) !important; }
+
+/* Text Colors */
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-tertiary { color: var(--text-tertiary) !important; }
+.text-on-dark { color: var(--text-on-dark) !important; }
+.text-on-dark-muted { color: var(--text-on-dark-muted) !important; }
+.text-accent-violet { color: var(--accent-violet) !important; }
+.text-accent-blue { color: var(--accent-blue) !important; }
+.text-accent-emerald { color: var(--accent-emerald) !important; }
+.text-accent-amber { color: var(--accent-amber) !important; }
+.text-accent-rose { color: var(--accent-rose) !important; }
+
+/* Borders */
+.border-subtle { border-color: var(--border-subtle) !important; }
+.border-light { border-color: var(--border-light) !important; }
+.border-medium { border-color: var(--border-medium) !important; }
+.border-dark { border-color: var(--border-dark) !important; }
+.border-focus { border-color: var(--border-focus) !important; }
+.border-accent-violet { border-color: var(--accent-violet) !important; }
+
+/* Shadows */
+.shadow-xs { box-shadow: var(--shadow-xs) !important; }
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-md { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl { box-shadow: var(--shadow-xl) !important; }
+.shadow-glow { box-shadow: var(--shadow-glow) !important; }
+
+/* Typography */
+.font-sans { font-family: var(--font-sans) !important; }
+.font-display { font-family: var(--font-display) !important; }
+.font-mono { font-family: var(--font-mono) !important; }
 
 /* ══════════════════════════════════════════════════════════════
    Layout
